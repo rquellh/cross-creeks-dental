@@ -1,0 +1,93 @@
+---
+const services = [
+  {
+    title: 'Preventive Care',
+    description: 'Prevention is the foundation of good oral health. Our preventive services include routine cleanings, comprehensive exams, digital X-rays, fluoride treatments, and sealants.',
+    icon: '🛡️',
+    items: ['Regular Cleanings', 'Dental Exams', 'Digital X-Rays', 'Fluoride Treatments', 'Dental Sealants']
+  },
+  {
+    title: 'Cosmetic Dentistry',
+    description: 'Enhance your smile with our cosmetic dentistry services designed to improve the appearance of your teeth while maintaining their health and function.',
+    icon: '✨',
+    items: ['Teeth Whitening', 'Porcelain Veneers', 'Bonding', 'Smile Makeovers', 'Gum Contouring']
+  },
+  {
+    title: 'Restorative Dentistry',
+    description: 'Restore your smile\'s function and appearance with our comprehensive restorative treatments using the latest technology and materials.',
+    icon: '🔧',
+    items: ['Fillings', 'Crowns & Bridges', 'Dental Implants', 'Dentures', 'Root Canal Therapy']
+  },
+  {
+    title: 'Emergency Care',
+    description: 'Dental emergencies can happen anytime. We provide prompt, professional care to address your urgent dental needs and relieve pain.',
+    icon: '🚨',
+    items: ['Toothache Relief', 'Broken Tooth Repair', 'Lost Filling/Crown', 'Abscess Treatment', 'Trauma Care']
+  },
+  {
+    title: 'Family Dentistry',
+    description: 'We provide comprehensive dental care for the whole family, from children to seniors, in a comfortable and welcoming environment.',
+    icon: '👨‍👩‍👧‍👦',
+    items: ['Pediatric Dentistry', 'Teen Dentistry', 'Adult Dentistry', 'Senior Care', 'Special Needs Care']
+  },
+  {
+    title: 'Orthodontics',
+    description: 'Straighten your teeth and improve your bite with modern orthodontic solutions tailored to your lifestyle and goals.',
+    icon: '😁',
+    items: ['Clear Aligners', 'Traditional Braces', 'Retainers', 'Bite Correction', 'Consultations']
+  }
+];
+---
+
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h1 class="text-3xl md:text-4xl font-bold text-brand-deep mb-4">
+        Our Services
+      </h1>
+      <p class="text-xl text-text-dark/70 max-w-3xl mx-auto">
+        We offer a comprehensive range of dental services using the latest technology and techniques to ensure your comfort and satisfaction.
+      </p>
+    </div>
+
+    <div class="space-y-12">
+      {services.map((service, index) => (
+        <div class={`flex flex-col lg:flex-row gap-8 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+          <div class="lg:w-1/2">
+            <div class="text-6xl mb-4">{service.icon}</div>
+            <h2 class="text-2xl md:text-3xl font-bold text-brand-deep mb-4">
+              {service.title}
+            </h2>
+            <p class="text-lg text-text-dark/70 mb-6">
+              {service.description}
+            </p>
+            <ul class="space-y-2">
+              {service.items.map((item) => (
+                <li class="flex items-center text-text-dark">
+                  <svg class="w-5 h-5 text-brand-medium mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="lg:w-1/2">
+            <div class="bg-bg-off-white h-80 rounded-lg flex items-center justify-center border border-brand-light/20">
+              <p class="text-text-dark/50">Service image placeholder</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="text-center mt-16">
+      <a
+        href="/contact"
+        class="inline-block bg-brand-deep text-white px-8 py-3 rounded-md font-semibold hover:bg-brand-medium transition-colors duration-200"
+      >
+        Schedule an Appointment
+      </a>
+    </div>
+  </div>
+</section>

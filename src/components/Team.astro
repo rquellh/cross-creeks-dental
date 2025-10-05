@@ -1,0 +1,132 @@
+---
+const teamMembers = [
+  {
+    name: 'Dr. [Name]',
+    title: 'General Dentist',
+    bio: 'Dr. [Name] has been practicing dentistry for over [X] years, bringing expertise and compassion to every patient interaction.',
+    education: ['DDS, [University]', '[Specialty Certification]']
+  },
+  {
+    name: 'Dr. [Name]',
+    title: 'General Dentist',
+    bio: 'With a focus on patient comfort and the latest dental technology, Dr. [Name] ensures every visit is a positive experience.',
+    education: ['DDS, [University]', '[Specialty Certification]']
+  }
+];
+
+const values = [
+  {
+    title: 'Patient-Centered Care',
+    description: 'Your comfort and well-being are our top priorities. We listen to your concerns and tailor our approach to your unique needs.',
+    icon: '❤️'
+  },
+  {
+    title: 'Advanced Technology',
+    description: 'We invest in the latest dental technology to provide more accurate diagnoses and more comfortable treatments.',
+    icon: '💻'
+  },
+  {
+    title: 'Continuing Education',
+    description: 'Our team stays current with the latest advancements in dentistry through ongoing training and education.',
+    icon: '📚'
+  },
+  {
+    title: 'Community Focus',
+    description: 'We\'re proud to be part of this community and committed to providing exceptional care to our neighbors.',
+    icon: '🏘️'
+  }
+];
+---
+
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Hero Section */}
+    <div class="text-center mb-16">
+      <h1 class="text-3xl md:text-4xl font-bold text-brand-deep mb-4">
+        About Cross Creeks Dental
+      </h1>
+      <p class="text-xl text-text-dark/70 max-w-3xl mx-auto">
+        We're dedicated to providing exceptional dental care in a warm, welcoming environment where every patient feels like family.
+      </p>
+    </div>
+
+    {/* Our Story */}
+    <div class="mb-20">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-bg-off-white p-8 md:p-12 rounded-lg">
+          <h2 class="text-2xl md:text-3xl font-bold text-brand-deep mb-6">Our Story</h2>
+          <div class="space-y-4 text-lg text-text-dark/70">
+            <p>
+              Cross Creeks Dental was founded with a simple mission: to provide high-quality dental care that's accessible,
+              comfortable, and personalized to each patient's needs.
+            </p>
+            <p>
+              We understand that visiting the dentist can be stressful for many people. That's why we've created an
+              environment where you can feel relaxed and confident in the care you receive. Our team combines years of
+              experience with the latest technology to ensure the best possible outcomes.
+            </p>
+            <p>
+              Whether you need a routine cleaning or a complex procedure, we're here to guide you through every step
+              with compassion and expertise.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Our Values */}
+    <div class="mb-20">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-deep mb-12 text-center">Our Values</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {values.map((value) => (
+          <div class="text-center">
+            <div class="text-5xl mb-4">{value.icon}</div>
+            <h3 class="text-xl font-semibold text-brand-deep mb-3">{value.title}</h3>
+            <p class="text-text-dark/70">{value.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* Meet Our Team */}
+    <div class="mb-12">
+      <h2 class="text-2xl md:text-3xl font-bold text-brand-deep mb-12 text-center">Meet Our Dentists</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        {teamMembers.map((member) => (
+          <div class="bg-bg-off-white rounded-lg overflow-hidden border border-brand-light/20">
+            <div class="h-64 bg-bg-light-gray flex items-center justify-center">
+              <p class="text-text-dark/50">Doctor photo placeholder</p>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-brand-deep mb-1">{member.name}</h3>
+              <p class="text-brand-medium font-semibold mb-4">{member.title}</p>
+              <p class="text-text-dark/70 mb-4">{member.bio}</p>
+              <div>
+                <p class="font-semibold text-text-dark mb-2">Education & Credentials:</p>
+                <ul class="space-y-1">
+                  {member.education.map((edu) => (
+                    <li class="text-text-dark/70 text-sm">• {edu}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* CTA */}
+    <div class="text-center mt-16">
+      <div class="bg-gradient-brand text-white p-12 rounded-lg">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">Ready to Experience the Difference?</h2>
+        <p class="text-xl mb-8 text-white/90">Schedule your appointment today and discover quality dental care.</p>
+        <a
+          href="/contact"
+          class="inline-block bg-white text-brand-deep px-8 py-3 rounded-md font-semibold hover:bg-bg-off-white transition-colors duration-200"
+        >
+          Book an Appointment
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
