@@ -1,0 +1,22 @@
+{
+  "name": "Cross Creeks Dental",
+  "phone": "(614) 866-2895",
+  "email": "financial@crosscreeksdental.com",
+  "address": {
+    "street": "1555 Cross Creeks Blvd",
+    "city": "Pickerington",
+    "state": "OH",
+    "zip": "43147",
+    "full": "1555 Cross Creeks Blvd, Pickerington, OH 43147"
+  },
+  "hours": {
+    "monday": "8:00 AM - 5:00 PM",
+    "tuesday": "8:00 AM - 5:00 PM",
+    "wednesday": "8:00 AM - 5:00 PM",
+    "thursday": "8:00 AM - 5:00 PM",
+    "friday": "Closed",
+    "saturday": "Closed",
+    "sunday": "Closed",
+    "display": "Mon - Thurs: 8:00 AM - 5:00 PM"
+  }
+}
