@@ -3,8 +3,15 @@ import { Image } from 'astro:assets';
 import womanSmiling from '../assets/images/woman-smiling.png';
 ---
 
-<section class="bg-bg-main-darker text-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="relative bg-bg-main-darker text-white overflow-hidden py-40">
+  <div class="hidden md:block absolute right-0 top-0 bottom-0 w-[calc(47%)] max-w-5xl 2xl:mr-30">
+    <Image
+      src={womanSmiling}
+      alt="Happy patient with a beautiful smile"
+      class="w-full h-full object-cover object-left"
+    />
+  </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div class="grid md:grid-cols-2 gap-12 items-center">
       <div>
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-brand-deep" style="font-family: var(--font-family-display);">
@@ -27,13 +34,6 @@ import womanSmiling from '../assets/images/woman-smiling.png';
             Our Services
           </a>
         </div>
-      </div>
-      <div class="hidden md:block">
-        <Image
-          src={womanSmiling}
-          alt="Happy patient with a beautiful smile"
-          class="w-full h-auto rounded-lg"
-        />
       </div>
     </div>
   </div>

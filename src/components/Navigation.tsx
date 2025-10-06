@@ -23,8 +23,8 @@ export default function Navigation() {
             <a href="/services" className="text-text-dark hover:text-brand-medium transition-colors duration-200">
               Services
             </a>
-            <a href="/about" className="text-text-dark hover:text-brand-medium transition-colors duration-200">
-              About
+            <a href="/team" className="text-text-dark hover:text-brand-medium transition-colors duration-200">
+              Our Team
             </a>
             <a href="/reviews" className="text-text-dark hover:text-brand-medium transition-colors duration-200">
               Reviews
