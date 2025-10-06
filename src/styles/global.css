@@ -14,6 +14,8 @@
   /* Neutral backgrounds */
   --color-bg-off-white: #fafbfc;
   --color-bg-light-gray: #f5f7fa;
+  --color-bg-main: #d9ecf8;
+  --color-bg-main-darker: #a5d3ee;
 
   /* Text colors */
   --color-text-dark: #2d3748;

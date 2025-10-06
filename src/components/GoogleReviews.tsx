@@ -40,7 +40,7 @@ export default function GoogleReviews() {
   }, [currentIndex]);
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-bg-main">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header with Google badge */}
         <div className="flex justify-between items-start mb-12">
