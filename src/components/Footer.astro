@@ -1,4 +1,6 @@
 ---
+import { MapPin, Phone, Mail } from 'lucide-react';
+import businessInfo from '../data/businessInfo.json';
 const currentYear = new Date().getFullYear();
 ---
 
@@ -20,7 +22,6 @@ const currentYear = new Date().getFullYear();
           <li><a href="/" class="text-white/80 hover:text-white transition-colors">Home</a></li>
           <li><a href="/services" class="text-white/80 hover:text-white transition-colors">Services</a></li>
           <li><a href="/about" class="text-white/80 hover:text-white transition-colors">About</a></li>
-          <li><a href="/reviews" class="text-white/80 hover:text-white transition-colors">Reviews</a></li>
           <li><a href="/contact" class="text-white/80 hover:text-white transition-colors">Contact</a></li>
         </ul>
       </div>
@@ -41,9 +42,9 @@ const currentYear = new Date().getFullYear();
       <div>
         <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
         <ul class="space-y-2 text-white/80">
-          <li>📍 [Your Address]</li>
-          <li>📞 [Your Phone]</li>
-          <li>✉️ [Your Email]</li>
+          <li class="flex items-center gap-2"><MapPin size={18} /> {businessInfo.address.full}</li>
+          <li class="flex items-center gap-2"><Phone size={18} /> {businessInfo.phone}</li>
+          <li class="flex items-center gap-2"><Mail size={18} /> {businessInfo.email}</li>
           <li class="pt-2">
             <div class="flex gap-4">
               <a href="#" class="hover:text-white transition-colors" aria-label="Facebook">

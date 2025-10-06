@@ -100,15 +100,6 @@ export default function Reviews() {
             ))}
           </div>
         </div>
-
-        <div className="text-center mt-12">
-          <a
-            href="/reviews"
-            className="inline-block text-brand-medium hover:text-brand-deep font-semibold transition-colors duration-200"
-          >
-            Read All Reviews →
-          </a>
-        </div>
       </div>
     </section>
   );

@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation';
+import Payments from '../components/Payments';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Payment Options - Cross Creeks Dental" description="We accept various payment methods including cash, check, major credit cards, and offer financing options through CareCredit and LendingClub.">
+  <Navigation client:load />
+  <Payments client:visible />
+  <Footer />
+</Layout>

@@ -23,11 +23,14 @@ export default function Navigation() {
             <a href="/services" className="text-text-dark hover:text-brand-medium transition-colors duration-200">
               Services
             </a>
+            <a href="/insurance" className="text-text-dark hover:text-brand-medium transition-colors duration-200">
+              Insurance
+            </a>
+            <a href="/payments" className="text-text-dark hover:text-brand-medium transition-colors duration-200">
+              Payments
+            </a>
             <a href="/team" className="text-text-dark hover:text-brand-medium transition-colors duration-200">
               Our Team
-            </a>
-            <a href="/reviews" className="text-text-dark hover:text-brand-medium transition-colors duration-200">
-              Reviews
             </a>
             <a href="/contact" className="text-text-dark hover:text-brand-medium transition-colors duration-200">
               Contact
@@ -76,11 +79,14 @@ export default function Navigation() {
               <a href="/services" className="text-text-dark hover:text-brand-medium transition-colors duration-200">
                 Services
               </a>
-              <a href="/about" className="text-text-dark hover:text-brand-medium transition-colors duration-200">
-                About
+              <a href="/insurance" className="text-text-dark hover:text-brand-medium transition-colors duration-200">
+                Insurance
               </a>
-              <a href="/reviews" className="text-text-dark hover:text-brand-medium transition-colors duration-200">
-                Reviews
+              <a href="/payments" className="text-text-dark hover:text-brand-medium transition-colors duration-200">
+                Payments
+              </a>
+              <a href="/team" className="text-text-dark hover:text-brand-medium transition-colors duration-200">
+                Our Team
               </a>
               <a href="/contact" className="text-text-dark hover:text-brand-medium transition-colors duration-200">
                 Contact
