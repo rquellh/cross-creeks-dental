@@ -4,6 +4,9 @@ import Navigation from '../components/Navigation';
 import Hero from '../components/Hero.astro';
 import GoogleReviews from '../components/GoogleReviews';
 import Services from '../components/Services.astro';
+import Doctors from '../components/Doctors';
+import WhyChooseUs from '../components/WhyChooseUs';
+import Insurance from '../components/Insurance';
 import Footer from '../components/Footer.astro';
 ---
 
@@ -12,5 +15,8 @@ import Footer from '../components/Footer.astro';
   <Hero />
   <GoogleReviews client:visible />
   <Services />
+  <Doctors client:visible />
+  <WhyChooseUs client:visible />
+  <Insurance client:visible />
   <Footer />
 </Layout>

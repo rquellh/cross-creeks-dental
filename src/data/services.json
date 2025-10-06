@@ -1,0 +1,98 @@
+[
+  {
+    "id": "routine-cleanings",
+    "title": "Routine Cleanings & Exams",
+    "description": "A cleaning of your teeth followed by a thorough check for cavities and gum disease",
+    "image": "/images/services/routine-cleanings.jpg"
+  },
+  {
+    "id": "teeth-whitening",
+    "title": "Teeth Whitening",
+    "description": "An effective way of lightening the natural color of your teeth without removing any of the tooth surface",
+    "image": "/images/services/teeth-whitening.jpg"
+  },
+  {
+    "id": "white-fillings",
+    "title": "White Fillings",
+    "description": "Restoration of the function and integrity of missing tooth structure resulting from decay or trauma",
+    "image": "/images/services/white-fillings.jpg"
+  },
+  {
+    "id": "crowns-bridges-veneers",
+    "title": "Crowns, Bridges & Veneers",
+    "description": "Restoration of lost or severely damaged teeth to improve appearance and function",
+    "image": "/images/services/crowns-bridges-veneers.jpg"
+  },
+  {
+    "id": "dentures",
+    "title": "Full and Partial Dentures",
+    "description": "A removable replacement for missing teeth and surrounding tissues",
+    "image": "/images/services/dentures.jpg"
+  },
+  {
+    "id": "implants",
+    "title": "Implants",
+    "description": "Restoration of tooth roots to provide for a strong foundation for permanent or removable teeth",
+    "image": "/images/services/implants.jpg"
+  },
+  {
+    "id": "veneers",
+    "title": "Veneers",
+    "description": "Custom-made shells that are placed on the front of the teeth to improve their appearance",
+    "image": "/images/services/veneers.jpg"
+  },
+  {
+    "id": "sealants",
+    "title": "Sealants",
+    "description": "Thin coatings that when painted on the chewing surfaces of the teeth that can prevent cavities",
+    "image": "/images/services/sealants.jpg"
+  },
+  {
+    "id": "bonding",
+    "title": "Bonding",
+    "description": "Using white filling material in a thin layer over your teeth to fix cosmetic concerns",
+    "image": "/images/services/bonding.jpg"
+  },
+  {
+    "id": "scaling-root-planning",
+    "title": "Scaling & Root Planning",
+    "description": "Sometimes referred to as a \"deep cleaning,\" this procedure is the first line treatment for periodontal \"gum\" disease",
+    "image": "/images/services/scaling-root-planning.jpg"
+  },
+  {
+    "id": "esthetic-recontouring",
+    "title": "Esthetic Recontouring",
+    "description": "Reshaping procedure for chipped or slightly irregularly shaped teeth",
+    "image": "/images/services/esthetic-recontouring.jpg"
+  },
+  {
+    "id": "root-canals",
+    "title": "Root Canals",
+    "description": "A procedure used to remove infected material and relieve pain in the inner parts of the tooth",
+    "image": "/images/services/root-canals.jpg"
+  },
+  {
+    "id": "clear-aligners",
+    "title": "Clear Aligners",
+    "description": "The clear alternative to metal braces",
+    "image": "/images/services/clear-aligners.jpg"
+  },
+  {
+    "id": "extractions",
+    "title": "Extractions",
+    "description": "The removal of teeth to eliminate pain and/or infection",
+    "image": "/images/services/extractions.jpg"
+  },
+  {
+    "id": "sleep-apnea-devices",
+    "title": "Oral Sleep Apnea Devices",
+    "description": "Upper and lower retainers that position the lower jaw forward to open the airway",
+    "image": "/images/services/sleep-apnea-devices.jpg"
+  },
+  {
+    "id": "night-guards",
+    "title": "Occlusal \"Night\" Guards",
+    "description": "Clear retainer for reducing premature tooth wear and pain reduction in the jaw",
+    "image": "/images/services/night-guards.jpg"
+  }
+]

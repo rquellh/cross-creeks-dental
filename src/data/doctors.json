@@ -1,0 +1,14 @@
+[
+  {
+    "id": "dr-quellhorst",
+    "name": "Melissa Quellhorst",
+    "title": "DDS",
+    "image": "/src/assets/images/doctors/dr-quellhorst.png"
+  },
+  {
+    "id": "dr-zaino",
+    "name": "Valerie Zaino",
+    "title": "DDS",
+    "image": "/src/assets/images/doctors/dr-zaino.png"
+  }
+]
