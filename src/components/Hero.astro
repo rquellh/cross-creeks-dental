@@ -1,10 +1,11 @@
 ---
 import { Image } from 'astro:assets';
 import womanSmiling from '../assets/images/woman-smiling.png';
+import Button from './Button';
 ---
 
 <section class="relative bg-bg-main-darker text-white overflow-hidden py-40">
-  <div class="hidden md:block absolute right-0 top-0 bottom-0 w-[calc(47%)] max-w-5xl 2xl:mr-30">
+  <div class="hidden sm:block absolute right-0 top-0 bottom-0 w-[calc(47%)] max-w-5xl 2xl:mr-30">
     <Image
       src={womanSmiling}
       alt="Happy patient with a beautiful smile"
@@ -21,20 +22,17 @@ import womanSmiling from '../assets/images/woman-smiling.png';
           Whether it's been 6 months or 6 years since your last visit, we're here to help you—no judgment, just great care.
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
-          <a
-            href="/contact"
-            class="bg-white text-brand-deep px-8 py-3 rounded-md font-semibold hover:bg-bg-off-white transition-colors duration-200 text-center"
-          >
+          <Button variant="secondary" href="/contact">
             Book an Appointment
-          </a>
-          <a
+          </Button>
+          <Button
+            variant="secondary"
             href="https://crosscreeksdenta.securepayments.cardpointe.com/pay?"
             target="_blank"
             rel="noopener noreferrer"
-            class="border-2 border-brand-deep text-brand-deep px-8 py-3 rounded-md font-semibold hover:bg-brand-deep/10 transition-colors duration-200 text-center"
           >
             Pay Bill Online
-          </a>
+          </Button>
         </div>
       </div>
     </div>

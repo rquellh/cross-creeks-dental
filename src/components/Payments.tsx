@@ -1,4 +1,5 @@
 import { CreditCard, DollarSign, FileText, Banknote } from 'lucide-react';
+import Button from './Button';
 
 const paymentMethods = [
   { name: 'Cash', icon: 'DollarSign' },
@@ -71,14 +72,13 @@ export default function Payments() {
             <p className="text-gray-600 mb-6">
               Conveniently pay your bill online with our secure payment portal
             </p>
-            <a
+            <Button
               href="https://crosscreeksdenta.securepayments.cardpointe.com/pay?"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-brand-deep text-white px-8 py-3 rounded-md font-semibold hover:bg-opacity-90 transition-all duration-200"
             >
               Pay Now
-            </a>
+            </Button>
           </div>
 
           <div className="text-center p-6">
@@ -88,14 +88,13 @@ export default function Payments() {
             <p className="text-gray-600 mb-6">
               We offer financing options through CareCredit to help make your dental care affordable
             </p>
-            <a
+            <Button
               href="https://www.carecredit.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-brand-deep text-white px-8 py-3 rounded-md font-semibold hover:bg-opacity-90 transition-all duration-200"
             >
               Learn More
-            </a>
+            </Button>
           </div>
 
           <div className="text-center p-6">
@@ -105,12 +104,9 @@ export default function Payments() {
             <p className="text-gray-600 mb-6">
               We offer a competitive in-house Dental Health Savings Club for those without insurance
             </p>
-            <a
-              href="/insurance"
-              className="inline-block bg-brand-deep text-white px-8 py-3 rounded-md font-semibold hover:bg-opacity-90 transition-all duration-200"
-            >
+            <Button href="/insurance">
               Learn More
-            </a>
+            </Button>
           </div>
         </div>
       </div>

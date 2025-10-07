@@ -1,5 +1,6 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import servicesData from '../data/servicesDetail.json';
+import Button from './Button';
 
 interface Service {
   id: string;
@@ -13,58 +14,57 @@ interface Service {
 const services: Service[] = servicesData;
 
 export default function ServicesCarousel() {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const flickityInstance = useRef<any>(null);
 
-  const scrollToIndex = (index: number) => {
-    if (scrollContainerRef.current) {
-      const cardWidth = 400 + 24; // card width + gap
-      scrollContainerRef.current.scrollTo({
-        left: index * cardWidth,
-        behavior: 'smooth'
-      });
-      setCurrentIndex(index);
-    }
-  };
-
-  // Auto-scroll every 8 seconds
   useEffect(() => {
-    const interval = setInterval(() => {
-      const nextIndex = (currentIndex + 1) % services.length;
-      scrollToIndex(nextIndex);
-    }, 8000);
+    // Dynamically import Flickity only on the client side
+    const initFlickity = async () => {
+      if (carouselRef.current && !flickityInstance.current) {
+        const Flickity = (await import('flickity')).default;
+        await import('flickity/css/flickity.css');
 
-    return () => clearInterval(interval);
-  }, [currentIndex]);
+        flickityInstance.current = new Flickity(carouselRef.current, {
+          wrapAround: true,
+          autoPlay: 8000,
+          pageDots: true,
+          prevNextButtons: false,
+          cellAlign: 'left',
+          draggable: true,
+        });
+      }
+    };
+
+    initFlickity();
+
+    return () => {
+      if (flickityInstance.current) {
+        flickityInstance.current.destroy();
+        flickityInstance.current = null;
+      }
+    };
+  }, []);
 
   return (
     <section className="py-16 bg-bg-main">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
         {/* Header */}
         <div className="mb-12 flex justify-between items-center">
           <h2 className="text-3xl md:text-4xl font-bold text-brand-deep" style={{ fontFamily: 'var(--font-family-display)' }}>
             Our Services
           </h2>
-          <a
-            href="/services"
-            className="bg-white text-brand-deep px-8 py-3 rounded-md font-semibold hover:bg-bg-off-white transition-colors duration-200"
-          >
+          <Button variant="secondary" href="/services">
             All Services
-          </a>
+          </Button>
         </div>
 
         {/* Services carousel */}
-        <div className="relative">
-          {/* Scrollable container */}
-          <div
-            ref={scrollContainerRef}
-            className="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory pb-4"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          >
+        <div className="relative -mx-4 sm:-mx-6 lg:-mx-8">
+          <div ref={carouselRef} className="carousel">
             {services.map((service) => (
               <div
                 key={service.id}
-                className="flex-none w-[85%] md:w-[400px] h-[400px] rounded-2xl snap-start overflow-hidden relative group bg-bg-main-darker"
+                className="carousel-cell w-[85%] md:w-[400px] h-[400px] rounded-2xl overflow-hidden relative group bg-bg-main-darker mx-3"
               >
                 {/* Background image with overlay */}
                 <div
@@ -86,28 +86,20 @@ export default function ServicesCarousel() {
               </div>
             ))}
           </div>
-
-          {/* Scroll dots */}
-          <div className="flex justify-center gap-2 mt-2">
-            {services.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => scrollToIndex(index)}
-                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                  index === currentIndex
-                    ? 'bg-brand-deep w-8'
-                    : 'bg-gray-300 hover:bg-gray-400'
-                }`}
-                aria-label={`Go to service ${index + 1}`}
-              />
-            ))}
-          </div>
         </div>
       </div>
 
       <style>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
+        .flickity-page-dots .dot {
+          background: rgb(209 213 219);
+          width: 10px;
+          height: 10px;
+          transition: all 0.3s;
+        }
+        .flickity-page-dots .dot.is-selected {
+          background: var(--color-brand-deep);
+          width: 32px;
+          border-radius: 9999px;
         }
       `}</style>
     </section>

@@ -1,5 +1,6 @@
 import { Shield, Sparkles, Undo2, AlertCircle, Users, Smile } from 'lucide-react';
 import servicesData from '../data/servicesDetail.json';
+import Button from './Button';
 
 interface Service {
   id: string;
@@ -66,12 +67,9 @@ export default function ServicesDetail() {
         </div>
 
         <div className="text-center mt-12">
-          <a
-            href="/contact"
-            className="inline-block bg-brand-deep text-white px-8 py-3 rounded-md font-semibold hover:bg-opacity-90 transition-all duration-200"
-          >
+          <Button href="/contact">
             Schedule an Appointment
-          </a>
+          </Button>
         </div>
       </div>
     </section>
