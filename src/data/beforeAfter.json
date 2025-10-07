@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "title": "Zoom Whitening",
+    "beforeImage": "/src/assets/images/before-after/whitening-before.png",
+    "afterImage": "/src/assets/images/before-after/whitening-after.png"
+  },
+  {
+    "id": 2,
+    "title": "Crowns",
+    "beforeImage": "/src/assets/images/before-after/crowns-before.png",
+    "afterImage": "/src/assets/images/before-after/crowns-after.png"
+  },
+  {
+    "id": 3,
+    "title": "Cosmetic Bonding",
+    "beforeImage": "/src/assets/images/before-after/cosmetic-bonding-before.png",
+    "afterImage": "/src/assets/images/before-after/cosmetic-bonding-after.png"
+  },
+  {
+    "id": 4,
+    "title": "Broken Tooth Repair",
+    "beforeImage": "/src/assets/images/before-after/broken-tooth-before.png",
+    "afterImage": "/src/assets/images/before-after/broken-tooth-after.png"
+  },
+  {
+    "id": 5,
+    "title": "Bridge",
+    "beforeImage": "/src/assets/images/before-after/bridge-before.png",
+    "afterImage": "/src/assets/images/before-after/bridge-after.png"
+  },
+  {
+    "id": 6,
+    "title": "Dentures",
+    "beforeImage": "/src/assets/images/before-after/dentures-before.png",
+    "afterImage": "/src/assets/images/before-after/dentures-after.png"
+  },
+  {
+    "id": 7,
+    "title": "Fillings",
+    "beforeImage": "/src/assets/images/before-after/fillings-before.png",
+    "afterImage": "/src/assets/images/before-after/fillings-after.png"
+  },
+  {
+    "id": 8,
+    "title": "Onlays",
+    "beforeImage": "/src/assets/images/before-after/onlays-before.png",
+    "afterImage": "/src/assets/images/before-after/onlays-after.png"
+  }
+]

@@ -2,11 +2,13 @@
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation';
 import ServicesDetail from '../components/ServicesDetail';
+import BeforeAfterGallery from '../components/BeforeAfterGallery';
 import Footer from '../components/Footer.astro';
 ---
 
 <Layout title="Our Services - Cross Creeks Dental" description="Comprehensive dental services including preventive care, cosmetic dentistry, and restorative procedures.">
   <Navigation client:load />
   <ServicesDetail client:visible />
+  <BeforeAfterGallery client:visible />
   <Footer />
 </Layout>

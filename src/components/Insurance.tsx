@@ -1,17 +1,17 @@
 import { Shield } from 'lucide-react';
 
 const insuranceProviders = [
+  { name: 'DeltaDental PPO/Premier', image: '/src/assets/images/insurance/delta-dental.png' },
+  { name: 'Metlife', image: '/src/assets/images/insurance/metlife.png' },
+  { name: 'Guardian', image: '/src/assets/images/insurance/guardian.png' },
+  { name: 'Anthem', image: '/src/assets/images/insurance/anthem.png' },
+  { name: 'United Healthcare', image: '/src/assets/images/insurance/united-healthcare.png' },
   { name: 'Aetna', image: '/src/assets/images/insurance/aetna.png' },
   { name: 'Cigna', image: '/src/assets/images/insurance/cigna.png' },
-  { name: 'DeltaDental PPO/Premier', image: '/src/assets/images/insurance/delta-dental.png' },
-  { name: 'Guardian', image: '/src/assets/images/insurance/guardian.png' },
   { name: 'Principal', image: '/src/assets/images/insurance/principal.png' },
-  { name: 'United Healthcare', image: '/src/assets/images/insurance/united-healthcare.png' },
-  { name: 'Metlife', image: '/src/assets/images/insurance/metlife.png' },
-  { name: 'Careington', image: '/src/assets/images/insurance/careington.png' },
-  { name: 'Humana', image: '/src/assets/images/insurance/humana.png' },
-  { name: 'Anthem', image: '/src/assets/images/insurance/anthem.png' },
   { name: 'Superior', image: '/src/assets/images/insurance/superior.png' },
+  { name: 'Humana', image: '/src/assets/images/insurance/humana.png' },
+  { name: 'Careington', image: '/src/assets/images/insurance/careington.png' },
   { name: 'Connection', image: '/src/assets/images/insurance/connection.png' }
 ];
 

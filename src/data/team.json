@@ -1,0 +1,56 @@
+[
+  {
+    "id": "angela",
+    "name": "Angela",
+    "title": "Office Manager",
+    "image": "/src/assets/images/team/angela.png"
+  },
+  {
+    "id": "lauren",
+    "name": "Lauren",
+    "title": "Dental Hygienist",
+    "image": "/src/assets/images/team/lauren.png"
+  },
+  {
+    "id": "catherine",
+    "name": "Catherine",
+    "title": "Dental Hygienist",
+    "image": "/src/assets/images/team/catherine.png"
+  },
+  {
+    "id": "paige",
+    "name": "Paige",
+    "title": "Dental Hygienist",
+    "image": "/src/assets/images/team/paige.png"
+  },
+  {
+    "id": "tiffany",
+    "name": "Tiffany",
+    "title": "Dental Hygienist",
+    "image": "/src/assets/images/team/tiffany.png"
+  },
+  {
+    "id": "rachel",
+    "name": "Rachel",
+    "title": "Dental Assistant",
+    "image": "/src/assets/images/team/rachel.png"
+  },
+  {
+    "id": "becky",
+    "name": "Becky",
+    "title": "Dental Assistant",
+    "image": "/src/assets/images/team/becky.png"
+  },
+  {
+    "id": "nora",
+    "name": "Nora",
+    "title": "Insurance Coordinator",
+    "image": "/src/assets/images/team/nora.png"
+  },
+  {
+    "id": "keristin",
+    "name": "Keristin",
+    "title": "Scheduling Coordinator",
+    "image": "/src/assets/images/team/keristin.png"
+  }
+]
