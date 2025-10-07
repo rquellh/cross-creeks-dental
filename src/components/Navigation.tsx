@@ -20,7 +20,7 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a href="/" className="block">
+            <a href={import.meta.env.BASE_URL} className="block">
               <img src={logo.src} alt="Cross Creeks Dental" className="h-12" />
             </a>
           </div>
@@ -30,7 +30,7 @@ export default function Navigation() {
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.href}
-                href={item.href}
+                href={`${import.meta.env.BASE_URL}${item.href.replace(/^\//, '')}`}
                 className="text-brand-deep hover:text-brand-medium focus-visible:text-brand-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-medium focus-visible:ring-offset-2 active:text-brand-deep transition-colors"
               >
                 {item.label}
@@ -74,7 +74,7 @@ export default function Navigation() {
               {NAV_ITEMS.map((item) => (
                 <a
                   key={item.href}
-                  href={item.href}
+                  href={`${import.meta.env.BASE_URL}${item.href.replace(/^\//, '')}`}
                   className="text-text-dark hover:text-brand-medium focus-visible:text-brand-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-medium focus-visible:ring-offset-2 active:text-brand-deep transition-colors"
                 >
                   {item.label}
