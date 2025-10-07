@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import reviewsData from '../data/reviews.json';
 import metadata from '../data/reviews-metadata.json';
 
@@ -15,29 +15,55 @@ const reviews: Review[] = reviewsData;
 const { totalReviews, averageRating } = metadata;
 
 export default function GoogleReviews() {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const flickityInstance = useRef<any>(null);
 
-  const scrollToIndex = (index: number) => {
-    if (scrollContainerRef.current) {
-      const cardWidth = 400 + 24; // card width + gap
-      scrollContainerRef.current.scrollTo({
-        left: index * cardWidth,
-        behavior: 'smooth'
-      });
-      setCurrentIndex(index);
-    }
-  };
-
-  // Auto-scroll every 8 seconds
   useEffect(() => {
-    const interval = setInterval(() => {
-      const nextIndex = (currentIndex + 1) % reviews.length;
-      scrollToIndex(nextIndex);
-    }, 8000);
+    // Dynamically import Flickity only on the client side
+    const initFlickity = async () => {
+      if (carouselRef.current && !flickityInstance.current) {
+        const Flickity = (await import('flickity')).default;
+        await import('flickity/css/flickity.css');
 
-    return () => clearInterval(interval);
-  }, [currentIndex]);
+        flickityInstance.current = new Flickity(carouselRef.current, {
+          wrapAround: true,
+          autoPlay: 8000,
+          pageDots: true,
+          prevNextButtons: false,
+          cellAlign: 'left',
+          draggable: true,
+        });
+
+        // Wait a bit for Flickity to render, then calculate heights
+        setTimeout(() => {
+          const cells = carouselRef.current?.querySelectorAll('.carousel-cell');
+          if (!cells) return;
+
+          let maxHeight = 0;
+          cells.forEach((cell) => {
+            const height = (cell as HTMLElement).offsetHeight;
+            if (height > maxHeight) maxHeight = height;
+          });
+
+          if (maxHeight > 0 && cells.length > 0) {
+            // Set all cells to the same height
+            cells.forEach((cell) => {
+              (cell as HTMLElement).style.height = `${maxHeight}px`;
+            });
+          }
+        }, 100);
+      }
+    };
+
+    initFlickity();
+
+    return () => {
+      if (flickityInstance.current) {
+        flickityInstance.current.destroy();
+        flickityInstance.current = null;
+      }
+    };
+  }, []);
 
   return (
     <section className="py-16 bg-bg-main">
@@ -67,17 +93,12 @@ export default function GoogleReviews() {
         </div>
 
         {/* Reviews carousel */}
-        <div className="relative">
-          {/* Scrollable container */}
-          <div
-            ref={scrollContainerRef}
-            className="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory pb-4"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          >
+        <div className="relative -mx-4 sm:-mx-6 lg:-mx-6">
+          <div ref={carouselRef} className="carousel">
             {reviews.map((review) => (
               <div
                 key={review.id}
-                className="flex-none w-[85%] md:w-[400px] bg-white border border-gray-200 rounded-2xl p-8 snap-start"
+                className="carousel-cell w-[85%] md:w-[400px] bg-white border border-gray-200 rounded-2xl p-8 mx-3 flex flex-col"
               >
                 {/* Star rating */}
                 <div className="flex gap-1 mb-4">
@@ -88,12 +109,14 @@ export default function GoogleReviews() {
                   ))}
                 </div>
 
-                {/* Review text */}
-                <p className="text-gray-700 text-base leading-relaxed mb-6">
-                  {review.text}
-                </p>
+                {/* Review text - grows to fill space */}
+                <div className="flex-grow mb-6">
+                  <p className="text-gray-700 text-base leading-relaxed">
+                    {review.text}
+                  </p>
+                </div>
 
-                {/* Author info */}
+                {/* Author info - stays at bottom */}
                 <div>
                   <p className="font-semibold text-brand-deep text-lg">{review.author}</p>
                   <p className="text-gray-600 text-sm">{review.date}</p>
@@ -101,28 +124,20 @@ export default function GoogleReviews() {
               </div>
             ))}
           </div>
-
-          {/* Scroll dots */}
-          <div className="flex justify-center gap-2 mt-2">
-            {reviews.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => scrollToIndex(index)}
-                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                  index === currentIndex
-                    ? 'bg-brand-deep w-8'
-                    : 'bg-gray-300 hover:bg-gray-400'
-                }`}
-                aria-label={`Go to review ${index + 1}`}
-              />
-            ))}
-          </div>
         </div>
       </div>
 
       <style>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
+        .flickity-page-dots .dot {
+          background: rgb(209 213 219);
+          width: 10px;
+          height: 10px;
+          transition: all 0.3s;
+        }
+        .flickity-page-dots .dot.is-selected {
+          background: var(--color-brand-deep);
+          width: 32px;
+          border-radius: 9999px;
         }
       `}</style>
     </section>

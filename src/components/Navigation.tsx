@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import logo from '../assets/images/logo.svg';
+import Button from './Button';
 
 const NAV_ITEMS = [
   { href: '/', label: 'Home' },
@@ -9,9 +10,6 @@ const NAV_ITEMS = [
   { href: '/payments', label: 'Payments' },
   { href: '/contact', label: 'Contact' },
 ];
-
-const LINK_CLASS = 'text-text-dark hover:text-brand-medium transition-colors duration-200';
-const BUTTON_CLASS = 'bg-brand-deep text-white px-6 py-2 rounded-md hover:bg-brand-medium transition-colors duration-200';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,20 +28,24 @@ export default function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {NAV_ITEMS.map((item) => (
-              <a key={item.href} href={item.href} className={LINK_CLASS}>
+              <a
+                key={item.href}
+                href={item.href}
+                className="text-brand-deep hover:text-brand-medium focus-visible:text-brand-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-medium focus-visible:ring-offset-2 active:text-brand-deep transition-colors"
+              >
                 {item.label}
               </a>
             ))}
-            <a href="/contact" className={BUTTON_CLASS}>
+            <Button href="/contact">
               Book Appointment
-            </a>
+            </Button>
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-text-dark hover:text-brand-medium focus:outline-none"
+              className="text-text-dark hover:text-brand-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-medium focus-visible:ring-offset-2 active:text-brand-deep transition-colors"
               aria-label="Toggle menu"
             >
               <svg
@@ -70,13 +72,17 @@ export default function Navigation() {
           <div className="md:hidden pb-4">
             <div className="flex flex-col space-y-3">
               {NAV_ITEMS.map((item) => (
-                <a key={item.href} href={item.href} className={LINK_CLASS}>
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="text-text-dark hover:text-brand-medium focus-visible:text-brand-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-medium focus-visible:ring-offset-2 active:text-brand-deep transition-colors"
+                >
                   {item.label}
                 </a>
               ))}
-              <a href="/contact" className={`${BUTTON_CLASS} text-center`}>
+              <Button href="/contact" className="">
                 Book Appointment
-              </a>
+              </Button>
             </div>
           </div>
         )}

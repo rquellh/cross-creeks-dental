@@ -1,4 +1,5 @@
 import { Shield } from 'lucide-react';
+import Button from './Button';
 
 const insuranceProviders = [
   { name: 'DeltaDental PPO/Premier', image: '/src/assets/images/insurance/delta-dental.png' },
@@ -58,14 +59,13 @@ export default function Insurance() {
             <p className="text-gray-600 mb-6">
               We offer a competitive in-house Dental Health Savings Club for those without insurance
             </p>
-            <a
+            <Button
               href="/Cross Creeks Dental - In House Plan.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-brand-deep text-white px-8 py-3 rounded-md font-semibold hover:bg-opacity-90 transition-all duration-200"
             >
               Plan Information
-            </a>
+            </Button>
           </div>
 
           <div className="text-center p-6">
@@ -75,12 +75,9 @@ export default function Insurance() {
             <p className="text-gray-600 mb-6">
               Our team is here to help you understand your insurance benefits
             </p>
-            <a
-              href="/contact"
-              className="inline-block bg-brand-deep text-white px-8 py-3 rounded-md font-semibold hover:bg-opacity-90 transition-all duration-200"
-            >
+            <Button href="/contact">
               Contact Us
-            </a>
+            </Button>
           </div>
         </div>
       </div>

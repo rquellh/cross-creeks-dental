@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import businessInfo from '../data/businessInfo.json';
+import Button from './Button';
 
 export default function ContactPage() {
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -164,13 +165,13 @@ export default function ContactPage() {
                 ></textarea>
               </div>
 
-              <button
+              <Button
                 type="submit"
                 disabled={formStatus === 'submitting'}
-                className="w-full bg-brand-deep text-white px-8 py-3 rounded-md font-semibold hover:bg-opacity-90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full"
               >
                 {formStatus === 'submitting' ? 'Sending...' : 'Send Message'}
-              </button>
+              </Button>
 
               {formStatus === 'success' && (
                 <p className="text-green-600 text-center">Thank you! Your message has been sent successfully.</p>
