@@ -1,10 +1,49 @@
-import { useState } from 'react';
+import { useState, type JSX } from 'react';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import businessInfo from '../data/businessInfo.json';
 import Button from './Button';
 
+interface ContactInfoItem {
+  icon: typeof MapPin;
+  title: string;
+  content: JSX.Element | string;
+}
+
 export default function ContactPage() {
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+
+  const contactInfo: ContactInfoItem[] = [
+    {
+      icon: MapPin,
+      title: 'Address',
+      content: (
+        <>
+          {businessInfo.address.street}<br />
+          {businessInfo.address.city}, {businessInfo.address.state} {businessInfo.address.zip}
+        </>
+      ),
+    },
+    {
+      icon: Phone,
+      title: 'Phone',
+      content: businessInfo.phone,
+    },
+    {
+      icon: Mail,
+      title: 'Email',
+      content: businessInfo.email,
+    },
+    {
+      icon: Clock,
+      title: 'Office Hours',
+      content: (
+        <>
+          Monday - Thursday: {businessInfo.hours.monday}<br />
+          Friday - Sunday: {businessInfo.hours.saturday}
+        </>
+      ),
+    },
+  ];
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -45,51 +84,20 @@ export default function ContactPage() {
             <h3 className="text-2xl font-bold text-brand-deep mb-6">Get In Touch</h3>
 
             <div className="space-y-6">
-              <div className="flex items-start">
-                <div className="text-brand-medium mr-4 mt-1">
-                  <MapPin size={24} />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-800 mb-1">Address</h4>
-                  <p className="text-gray-600">
-                    {businessInfo.address.street}<br />
-                    {businessInfo.address.city}, {businessInfo.address.state} {businessInfo.address.zip}
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start">
-                <div className="text-brand-medium mr-4 mt-1">
-                  <Phone size={24} />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-800 mb-1">Phone</h4>
-                  <p className="text-gray-600">{businessInfo.phone}</p>
-                </div>
-              </div>
-
-              <div className="flex items-start">
-                <div className="text-brand-medium mr-4 mt-1">
-                  <Mail size={24} />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-800 mb-1">Email</h4>
-                  <p className="text-gray-600">{businessInfo.email}</p>
-                </div>
-              </div>
-
-              <div className="flex items-start">
-                <div className="text-brand-medium mr-4 mt-1">
-                  <Clock size={24} />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-800 mb-1">Office Hours</h4>
-                  <p className="text-gray-600">
-                    Monday - Thursday: {businessInfo.hours.monday}<br />
-                    Friday - Sunday: {businessInfo.hours.saturday}
-                  </p>
-                </div>
-              </div>
+              {contactInfo.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <div key={item.title} className="flex items-start">
+                    <div className="text-brand-deep mr-4 mt-1">
+                      <Icon size={24} />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-brand-deep mb-1">{item.title}</h4>
+                      <p className="text-gray-600">{item.content}</p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
 
             {/* Google Map */}
@@ -142,12 +150,13 @@ export default function ContactPage() {
 
               <div>
                 <label htmlFor="phone" className="block text-sm font-medium text-gray-800 mb-2">
-                  Phone Number
+                  Phone Number *
                 </label>
                 <input
                   type="tel"
                   id="phone"
                   name="phone"
+                  required
                   className="w-full px-4 py-3 bg-bg-off-white border border-brand-light/30 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-medium focus:border-transparent"
                 />
               </div>

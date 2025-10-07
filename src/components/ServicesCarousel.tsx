@@ -71,7 +71,7 @@ export default function ServicesCarousel() {
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105"
                   style={{ backgroundImage: `url(${service.image})` }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/15 to-transparent"></div>
                 </div>
 
                 {/* Content */}
