@@ -40,7 +40,7 @@ export default function Button({
   if (href && !disabled) {
     const finalHref = href.startsWith('http') || href.startsWith('#')
       ? href
-      : `${import.meta.env.BASE_URL}${href.replace(/^\//, '')}`;
+      : `${import.meta.env.BASE_URL.replace(/\/$/, '')}${href}`;
 
     return (
       <a

@@ -30,7 +30,7 @@ export default function Navigation() {
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.href}
-                href={`${import.meta.env.BASE_URL}${item.href.replace(/^\//, '')}`}
+                href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}${item.href}`}
                 className="text-brand-deep hover:text-brand-medium focus-visible:text-brand-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-medium focus-visible:ring-offset-2 active:text-brand-deep transition-colors"
               >
                 {item.label}
@@ -74,7 +74,7 @@ export default function Navigation() {
               {NAV_ITEMS.map((item) => (
                 <a
                   key={item.href}
-                  href={`${import.meta.env.BASE_URL}${item.href.replace(/^\//, '')}`}
+                  href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}${item.href}`}
                   className="text-text-dark hover:text-brand-medium focus-visible:text-brand-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-medium focus-visible:ring-offset-2 active:text-brand-deep transition-colors"
                 >
                   {item.label}
