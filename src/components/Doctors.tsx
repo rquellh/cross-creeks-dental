@@ -46,7 +46,7 @@ export default function Doctors() {
               {/* Name and title */}
               <div className="text-center">
                 <h3 className="text-2xl font-bold text-brand-deep mb-1">
-                  <span>{doctor.name}</span><span>, {doctor.title}</span>  
+                  {doctor.name}
                 </h3>
               </div>
             </div>

@@ -58,6 +58,11 @@ export default function Payments() {
           })}
         </div>
 
+
+        <p className="text-center text-sm text-gray-500 my-4 max-w-3xl mx-auto">
+          *Please note: A 3% processing fee applies to credit card transactions. No fees for debit or FSA/HSA payments.
+        </p>
+
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           <div className="text-center p-6">
             <h3 className="text-2xl font-bold text-brand-deep mb-3">

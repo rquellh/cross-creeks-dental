@@ -1,6 +1,18 @@
 import { useState } from 'react';
 import logo from '../assets/images/logo.svg';
 
+const NAV_ITEMS = [
+  { href: '/', label: 'Home' },
+    { href: '/team', label: 'Our Team' },
+  { href: '/services', label: 'Services' },
+  { href: '/insurance', label: 'Insurance' },
+  { href: '/payments', label: 'Payments' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const LINK_CLASS = 'text-text-dark hover:text-brand-medium transition-colors duration-200';
+const BUTTON_CLASS = 'bg-brand-deep text-white px-6 py-2 rounded-md hover:bg-brand-medium transition-colors duration-200';
+
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -17,28 +29,12 @@ export default function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="/" className="text-text-dark hover:text-brand-medium transition-colors duration-200">
-              Home
-            </a>
-            <a href="/services" className="text-text-dark hover:text-brand-medium transition-colors duration-200">
-              Services
-            </a>
-            <a href="/insurance" className="text-text-dark hover:text-brand-medium transition-colors duration-200">
-              Insurance
-            </a>
-            <a href="/payments" className="text-text-dark hover:text-brand-medium transition-colors duration-200">
-              Payments
-            </a>
-            <a href="/team" className="text-text-dark hover:text-brand-medium transition-colors duration-200">
-              Our Team
-            </a>
-            <a href="/contact" className="text-text-dark hover:text-brand-medium transition-colors duration-200">
-              Contact
-            </a>
-            <a
-              href="/contact"
-              className="bg-brand-deep text-white px-6 py-2 rounded-md hover:bg-brand-medium transition-colors duration-200"
-            >
+            {NAV_ITEMS.map((item) => (
+              <a key={item.href} href={item.href} className={LINK_CLASS}>
+                {item.label}
+              </a>
+            ))}
+            <a href="/contact" className={BUTTON_CLASS}>
               Book Appointment
             </a>
           </div>
@@ -73,28 +69,12 @@ export default function Navigation() {
         {isOpen && (
           <div className="md:hidden pb-4">
             <div className="flex flex-col space-y-3">
-              <a href="/" className="text-text-dark hover:text-brand-medium transition-colors duration-200">
-                Home
-              </a>
-              <a href="/services" className="text-text-dark hover:text-brand-medium transition-colors duration-200">
-                Services
-              </a>
-              <a href="/insurance" className="text-text-dark hover:text-brand-medium transition-colors duration-200">
-                Insurance
-              </a>
-              <a href="/payments" className="text-text-dark hover:text-brand-medium transition-colors duration-200">
-                Payments
-              </a>
-              <a href="/team" className="text-text-dark hover:text-brand-medium transition-colors duration-200">
-                Our Team
-              </a>
-              <a href="/contact" className="text-text-dark hover:text-brand-medium transition-colors duration-200">
-                Contact
-              </a>
-              <a
-                href="/contact"
-                className="bg-brand-deep text-white px-6 py-2 rounded-md hover:bg-brand-medium transition-colors duration-200 text-center"
-              >
+              {NAV_ITEMS.map((item) => (
+                <a key={item.href} href={item.href} className={LINK_CLASS}>
+                  {item.label}
+                </a>
+              ))}
+              <a href="/contact" className={`${BUTTON_CLASS} text-center`}>
                 Book Appointment
               </a>
             </div>

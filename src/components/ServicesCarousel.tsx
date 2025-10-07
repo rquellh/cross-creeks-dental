@@ -1,11 +1,13 @@
 import { useRef, useEffect, useState } from 'react';
-import servicesData from '../data/services.json';
+import servicesData from '../data/servicesDetail.json';
 
 interface Service {
   id: string;
   title: string;
   description: string;
+  icon: string;
   image: string;
+  items: string[];
 }
 
 const services: Service[] = servicesData;
@@ -62,22 +64,22 @@ export default function ServicesCarousel() {
             {services.map((service) => (
               <div
                 key={service.id}
-                className="flex-none w-[85%] md:w-[400px] h-[400px] rounded-2xl snap-start overflow-hidden relative group"
+                className="flex-none w-[85%] md:w-[400px] h-[400px] rounded-2xl snap-start overflow-hidden relative group bg-bg-main-darker"
               >
                 {/* Background image with overlay */}
                 <div
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105"
                   style={{ backgroundImage: `url(${service.image})` }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                 </div>
 
                 {/* Content */}
                 <div className="relative h-full flex flex-col justify-end p-8">
-                  <h3 className="text-2xl font-bold text-white mb-3">
+                  <h3 className="text-2xl font-bold text-white mb-3 drop-shadow-lg">
                     {service.title}
                   </h3>
-                  <p className="text-white/90 text-base leading-relaxed">
+                  <p className="text-white text-base leading-relaxed drop-shadow-md">
                     {service.description}
                   </p>
                 </div>

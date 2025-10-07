@@ -44,7 +44,7 @@ export default function WhyChooseUs() {
               30+ Years of Trusted Care
             </h3>
             <p className="text-gray-700 leading-relaxed">
-              Since 1995, families in Pickerington have trusted us with their smiles. Our experience means we've seen it all—and we use modern technology like digital x-rays to diagnose accurately and treat you comfortably.
+              Our decades of experience, combined with modern tools like intraoral scanners and 3D printers, means we diagnose accurately and get you the care you need quickly and comfortably.
             </p>
           </div>
 
@@ -57,7 +57,7 @@ export default function WhyChooseUs() {
               Your Neighbors, Not a Chain
             </h3>
             <p className="text-gray-700 leading-relaxed">
-              We're locally owned and deeply invested in this community. You'll see the same familiar faces at every visit, and we take the time to know you—not just your teeth.
+              We live here, work here, and care about community. You'll see the same faces at every visit, and we actually get to know you—not just your teeth.
             </p>
           </div>
         </div>

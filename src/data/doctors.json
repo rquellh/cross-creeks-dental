@@ -1,14 +1,15 @@
 [
   {
     "id": "dr-quellhorst",
-    "name": "Melissa Quellhorst",
-    "title": "DDS",
+    "name": "Melissa Quellhorst, DDS",
+    "title": "Dentist & Owner",
+
     "image": "/src/assets/images/doctors/dr-quellhorst.png"
   },
   {
     "id": "dr-zaino",
-    "name": "Valerie Zaino",
-    "title": "DDS",
+    "name": "Valerie Zaino, DDS",
+    "title": "Dentist",
     "image": "/src/assets/images/doctors/dr-zaino.png"
   }
 ]

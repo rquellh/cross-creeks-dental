@@ -1,43 +1,16 @@
 import { Shield, Sparkles, Undo2, AlertCircle, Users, Smile } from 'lucide-react';
+import servicesData from '../data/servicesDetail.json';
 
-const services = [
-  {
-    title: 'Preventive Care',
-    description: 'Prevention is the foundation of good oral health. Our preventive services include routine cleanings, comprehensive exams, digital X-rays, fluoride treatments, and sealants.',
-    icon: 'Shield',
-    items: ['Regular Cleanings', 'Dental Exams', 'Digital X-Rays', 'Fluoride Treatments', 'Dental Sealants']
-  },
-  {
-    title: 'Cosmetic Dentistry',
-    description: 'Enhance your smile with our cosmetic dentistry services designed to improve the appearance of your teeth while maintaining their health and function.',
-    icon: 'Sparkles',
-    items: ['Teeth Whitening', 'Porcelain Veneers', 'Bonding', 'Smile Makeovers', 'Gum Contouring']
-  },
-  {
-    title: 'Restorative Dentistry',
-    description: 'Restore your smile\'s function and appearance with our comprehensive restorative treatments using the latest technology and materials.',
-    icon: 'Undo2',
-    items: ['Fillings', 'Crowns & Bridges', 'Dental Implants', 'Dentures', 'Root Canal Therapy']
-  },
-  {
-    title: 'Emergency Care',
-    description: 'Dental emergencies can happen anytime. We provide prompt, professional care to address your urgent dental needs and relieve pain.',
-    icon: 'AlertCircle',
-    items: ['Toothache Relief', 'Broken Tooth Repair', 'Lost Filling/Crown', 'Abscess Treatment', 'Trauma Care']
-  },
-  {
-    title: 'Family Dentistry',
-    description: 'We provide comprehensive dental care for the whole family, from children to seniors, in a comfortable and welcoming environment.',
-    icon: 'Users',
-    items: ['Pediatric Dentistry', 'Teen Dentistry', 'Adult Dentistry', 'Senior Care', 'Special Needs Care']
-  },
-  {
-    title: 'Orthodontics',
-    description: 'Straighten your teeth and improve your bite with modern orthodontic solutions tailored to your lifestyle and goals.',
-    icon: 'Smile',
-    items: ['Clear Aligners', 'Traditional Braces', 'Retainers', 'Bite Correction', 'Consultations']
-  }
-];
+interface Service {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  image: string;
+  items: string[];
+}
+
+const services: Service[] = servicesData;
 
 const iconMap: Record<string, any> = {
   Shield,
@@ -65,7 +38,7 @@ export default function ServicesDetail() {
 
             return (
               <div
-                key={service.title}
+                key={service.id}
                 className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
               >
                 <div className="flex justify-center items-center mb-4">
