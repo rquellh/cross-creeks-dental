@@ -7,8 +7,8 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://crosscreeksdental.com',
-  base: '/',
+  site: 'https://rquellh.github.io',
+  base: '/cross-creeks-dental',
   integrations: [react(), sitemap()],
 
   vite: {
