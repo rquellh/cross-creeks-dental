@@ -64,7 +64,7 @@ export default function BeforeAfterSlider({ beforeImage, afterImage, title }: Be
         <div className="absolute inset-0">
           <img
             src={afterImage}
-            alt="After"
+            alt="After dental treatment - improved smile"
             className="w-full h-full object-cover"
             draggable={false}
           />
@@ -80,7 +80,7 @@ export default function BeforeAfterSlider({ beforeImage, afterImage, title }: Be
         >
           <img
             src={beforeImage}
-            alt="Before"
+            alt="Before dental treatment"
             className="w-full h-full object-cover"
             draggable={false}
           />

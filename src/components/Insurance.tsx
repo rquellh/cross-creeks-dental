@@ -21,7 +21,7 @@ export default function Insurance() {
     <section className="py-16 bg-bg-main">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl md:text-4xl font-bold text-brand-deep mb-4 text-center" style={{ fontFamily: 'var(--font-family-display)' }}>
-          Insurance We Accept
+          Insurance we accept
         </h2>
         <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
           We work with most major insurance providers. Don't see your insurance provider listed? We might have added your provider. Contact our financial coordinator for more details.

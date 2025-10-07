@@ -77,7 +77,7 @@ export default function GoogleReviews() {
             href="https://maps.google.com/maps?cid=11133590865144049245"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 bg-white border border-gray-200 rounded-full px-6 py-3 shadow-sm hover:shadow-md transition-shadow duration-200"
+            className="flex items-center gap-3 bg-white border border-gray-200 rounded-full px-6 py-3 hover:bg-bg-off-white transition-shadow duration-200"
           >
             <svg className="w-6 h-6" viewBox="0 0 24 24">
               <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
