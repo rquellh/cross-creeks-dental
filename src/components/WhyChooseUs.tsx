@@ -1,4 +1,4 @@
-import { Heart, Users, Award, Home } from 'lucide-react';
+import { Heart, Laugh, Award, Home } from 'lucide-react';
 
 export default function WhyChooseUs() {
   return (
@@ -25,13 +25,13 @@ export default function WhyChooseUs() {
           {/* Card 2 */}
           <div className="bg-white p-8 rounded-lg text-center">
             <div className="flex justify-center mb-6">
-              <Users className="w-12 h-12 text-brand-deep" />
+              <Laugh className="w-12 h-12 text-brand-deep" />
             </div>
             <h3 className="text-xl font-bold text-brand-deep mb-4">
-              Female-Owned & Operated
+              Gentle Care for Nervous Patients
             </h3>
             <p className="text-gray-700 leading-relaxed">
-              Dr. Quellhorst and Dr. Zaino bring a gentle, patient-centered approach to every visit. Many of our patients specifically seek the comfort and understanding that comes with our practice.
+              If you've been avoiding the dentist out of fear or embarrassment, you're in good company. Dr. Quellhorst and Dr. Zaino have helped hundreds of anxious patients overcome their fears. We listen without judgment, explain everything clearly, and never pressure you into treatment.
             </p>
           </div>
 
@@ -57,7 +57,7 @@ export default function WhyChooseUs() {
               Your Neighbors, Not a Chain
             </h3>
             <p className="text-gray-700 leading-relaxed">
-              We live here, work here, and care about community. You'll see the same faces at every visit, and we actually get to know you—not just your teeth.
+              We live here, work here, and care about this community. You'll see the same faces at every visit, and we actually get to know you—not just your teeth.
             </p>
           </div>
         </div>

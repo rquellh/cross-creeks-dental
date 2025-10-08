@@ -46,7 +46,7 @@ export default function ServicesCarousel() {
           autoPlay: 8000,
           pageDots: true,
           prevNextButtons: false,
-          cellAlign: 'left',
+          cellAlign: 'center',
           draggable: true,
         });
       }
