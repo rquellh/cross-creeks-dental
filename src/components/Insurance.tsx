@@ -1,19 +1,33 @@
 import { Shield } from 'lucide-react';
 import Button from './Button';
 
+// Import all insurance logos
+import deltaDental from '../assets/images/insurance/delta-dental.png';
+import metlife from '../assets/images/insurance/metlife.png';
+import guardian from '../assets/images/insurance/guardian.png';
+import anthem from '../assets/images/insurance/anthem.png';
+import unitedHealthcare from '../assets/images/insurance/united-healthcare.png';
+import aetna from '../assets/images/insurance/aetna.png';
+import cigna from '../assets/images/insurance/cigna.png';
+import principal from '../assets/images/insurance/principal.png';
+import superior from '../assets/images/insurance/superior.png';
+import humana from '../assets/images/insurance/humana.png';
+import careington from '../assets/images/insurance/careington.png';
+import connection from '../assets/images/insurance/connection.png';
+
 const insuranceProviders = [
-  { name: 'DeltaDental PPO/Premier', image: '/src/assets/images/insurance/delta-dental.png' },
-  { name: 'Metlife', image: '/src/assets/images/insurance/metlife.png' },
-  { name: 'Guardian', image: '/src/assets/images/insurance/guardian.png' },
-  { name: 'Anthem', image: '/src/assets/images/insurance/anthem.png' },
-  { name: 'United Healthcare', image: '/src/assets/images/insurance/united-healthcare.png' },
-  { name: 'Aetna', image: '/src/assets/images/insurance/aetna.png' },
-  { name: 'Cigna', image: '/src/assets/images/insurance/cigna.png' },
-  { name: 'Principal', image: '/src/assets/images/insurance/principal.png' },
-  { name: 'Superior', image: '/src/assets/images/insurance/superior.png' },
-  { name: 'Humana', image: '/src/assets/images/insurance/humana.png' },
-  { name: 'Careington', image: '/src/assets/images/insurance/careington.png' },
-  { name: 'Connection', image: '/src/assets/images/insurance/connection.png' }
+  { name: 'DeltaDental PPO/Premier', image: deltaDental.src },
+  { name: 'Metlife', image: metlife.src },
+  { name: 'Guardian', image: guardian.src },
+  { name: 'Anthem', image: anthem.src },
+  { name: 'United Healthcare', image: unitedHealthcare.src },
+  { name: 'Aetna', image: aetna.src },
+  { name: 'Cigna', image: cigna.src },
+  { name: 'Principal', image: principal.src },
+  { name: 'Superior', image: superior.src },
+  { name: 'Humana', image: humana.src },
+  { name: 'Careington', image: careington.src },
+  { name: 'Connection', image: connection.src }
 ];
 
 export default function Insurance() {
