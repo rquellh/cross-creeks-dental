@@ -1,6 +1,7 @@
 import { useRef, useEffect } from 'react';
 import reviewsData from '../data/reviews.json';
 import metadata from '../data/reviews-metadata.json';
+import Button from './Button';
 
 interface Review {
   id: string;
@@ -30,7 +31,7 @@ export default function GoogleReviews() {
           autoPlay: 8000,
           pageDots: true,
           prevNextButtons: false,
-          cellAlign: 'left',
+          cellAlign: 'center',
           draggable: true,
         });
 
@@ -66,10 +67,10 @@ export default function GoogleReviews() {
   }, []);
 
   return (
-    <section className="py-16 bg-bg-main">
+    <section className="pt-16 pb-8 bg-bg-main">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header with Google badge */}
-        <div className="flex justify-between items-start mb-12">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start items-center gap-4 mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-brand-deep" style={{ fontFamily: 'var(--font-family-display)' }}>
             What our patients say
           </h2>
@@ -86,8 +87,8 @@ export default function GoogleReviews() {
               <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
             </svg>
             <div className="text-left">
-              <div className="font-semibold text-gray-900 text-sm">Google reviews</div>
-              <div className="text-xs text-gray-600">{totalReviews.toLocaleString()} reviews • {averageRating} ★</div>
+              <div className="block font-semibold text-gray-900 text-sm">Google reviews</div>
+              <div className="text-xs sm:text-xs text-sm text-gray-600">{averageRating} ★ • {totalReviews.toLocaleString()} reviews</div>
             </div>
           </a>
         </div>
@@ -124,6 +125,26 @@ export default function GoogleReviews() {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Action buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-16">
+          <Button
+            variant="primary"
+            href="https://maps.google.com/maps?cid=11133590865144049245"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            See all reviews
+          </Button>
+          <Button
+            variant="secondary"
+            href="https://search.google.com/local/writereview?placeid=ChIJ_yIHvCx7OIgRXe5xT-d1gpo"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Leave a review
+          </Button>
         </div>
       </div>
 

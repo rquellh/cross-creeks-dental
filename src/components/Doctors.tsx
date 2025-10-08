@@ -38,13 +38,12 @@ export default function Doctors() {
           {doctors.map((doctor) => (
             <div key={doctor.id} className="flex flex-col items-center">
               {/* Doctor photo with circle-face effect */}
-              <div className="inline-block rounded-full bg-bg-main-darker w-80 h-80 mb-6 mt-[60px]">
+              <div className="inline-block rounded-full bg-bg-main-darker w-52 h-52 md:w-80 md:h-80 mb-6 mt-[40px] md:mt-[60px]">
                 <div
-                  className="inline-block w-80 h-[380px] -mt-[60px] bg-none bg-no-repeat bg-center bg-bottom"
+                  className="inline-block w-52 h-[248px] md:w-80 md:h-[380px] -mt-[40px] md:-mt-[60px] bg-none bg-no-repeat bg-center bg-bottom [border-radius:0_0_104px_104px] md:[border-radius:0_0_160px_160px]"
                   style={{
                     backgroundImage: `url(${doctorImages[doctor.image]?.src || doctor.image})`,
-                    backgroundSize: 'cover',
-                    borderRadius: '0 0 160px 160px'
+                    backgroundSize: 'cover'
                   }}
                 >
                 </div>
