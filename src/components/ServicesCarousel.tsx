@@ -2,6 +2,23 @@ import { useRef, useEffect } from 'react';
 import servicesData from '../data/servicesDetail.json';
 import Button from './Button';
 
+// Import service images
+import preventiveImg from '../assets/images/services/preventive.png';
+import cosmeticImg from '../assets/images/services/cosmetic.png';
+import restorativeImg from '../assets/images/services/restorative.png';
+import emergencyImg from '../assets/images/services/emergency.png';
+import familyImg from '../assets/images/services/family.png';
+import orthodonticsImg from '../assets/images/services/orthodontics.png';
+
+const serviceImages: Record<string, any> = {
+  '/images/services/preventive.png': preventiveImg,
+  '/images/services/cosmetic.png': cosmeticImg,
+  '/images/services/restorative.png': restorativeImg,
+  '/images/services/emergency.png': emergencyImg,
+  '/images/services/family.png': familyImg,
+  '/images/services/orthodontics.png': orthodonticsImg,
+};
+
 interface Service {
   id: string;
   title: string;
@@ -69,7 +86,7 @@ export default function ServicesCarousel() {
                 {/* Background image with overlay */}
                 <div
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105"
-                  style={{ backgroundImage: `url(${service.image})` }}
+                  style={{ backgroundImage: `url(${serviceImages[service.image]?.src || service.image})` }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/15 to-transparent"></div>
                 </div>
