@@ -1,6 +1,31 @@
 ---
 import teamData from '../data/team.json';
 import doctorsData from '../data/doctors.json';
+import drQuellhorst from '../assets/images/doctors/dr-quellhorst.png';
+import drZaino from '../assets/images/doctors/dr-zaino.png';
+import angela from '../assets/images/team/angela.png';
+import lauren from '../assets/images/team/lauren.png';
+import catherine from '../assets/images/team/catherine.png';
+import paige from '../assets/images/team/paige.png';
+import tiffany from '../assets/images/team/tiffany.png';
+import rachel from '../assets/images/team/rachel.png';
+import becky from '../assets/images/team/becky.png';
+import nora from '../assets/images/team/nora.png';
+import keristin from '../assets/images/team/keristin.png';
+
+const imageMap: Record<string, any> = {
+  '/src/assets/images/doctors/dr-quellhorst.png': drQuellhorst,
+  '/src/assets/images/doctors/dr-zaino.png': drZaino,
+  '/src/assets/images/team/angela.png': angela,
+  '/src/assets/images/team/lauren.png': lauren,
+  '/src/assets/images/team/catherine.png': catherine,
+  '/src/assets/images/team/paige.png': paige,
+  '/src/assets/images/team/tiffany.png': tiffany,
+  '/src/assets/images/team/rachel.png': rachel,
+  '/src/assets/images/team/becky.png': becky,
+  '/src/assets/images/team/nora.png': nora,
+  '/src/assets/images/team/keristin.png': keristin,
+};
 
 interface TeamMember {
   id: string;
@@ -37,7 +62,7 @@ const allTeam = [...doctors, ...staff];
               <div class="inline-block rounded-full bg-bg-main-darker w-52 h-52 mb-6 mt-[40px]">
                 <div
                   class="inline-block w-52 h-[248px] -mt-[40px] bg-none bg-no-repeat bg-center bg-bottom"
-                  style={`background-image: url(${member.image}); background-size: cover; border-radius: 0 0 104px 104px;`}
+                  style={`background-image: url(${imageMap[member.image]?.src || member.image}); background-size: cover; border-radius: 0 0 104px 104px;`}
                 >
                 </div>
               </div>

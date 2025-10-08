@@ -1,4 +1,11 @@
 import doctorsData from '../data/doctors.json';
+import drQuellhorst from '../assets/images/doctors/dr-quellhorst.png';
+import drZaino from '../assets/images/doctors/dr-zaino.png';
+
+const doctorImages: Record<string, any> = {
+  '/src/assets/images/doctors/dr-quellhorst.png': drQuellhorst,
+  '/src/assets/images/doctors/dr-zaino.png': drZaino,
+};
 
 interface Doctor {
   id: string;
@@ -35,7 +42,7 @@ export default function Doctors() {
                 <div
                   className="inline-block w-80 h-[380px] -mt-[60px] bg-none bg-no-repeat bg-center bg-bottom"
                   style={{
-                    backgroundImage: `url(${doctor.image})`,
+                    backgroundImage: `url(${doctorImages[doctor.image]?.src || doctor.image})`,
                     backgroundSize: 'cover',
                     borderRadius: '0 0 160px 160px'
                   }}
