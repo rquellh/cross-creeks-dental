@@ -1,14 +1,19 @@
 import { CreditCard, DollarSign, FileText, Banknote } from 'lucide-react';
 import Button from './Button';
+import visa from '../assets/images/payments/visa.png';
+import mastercard from '../assets/images/payments/mastercard.png';
+import amex from '../assets/images/payments/amex.png';
+import discover from '../assets/images/payments/discover.png';
+import carecredit from '../assets/images/payments/carecredit.png';
 
 const paymentMethods = [
   { name: 'Cash', icon: 'DollarSign' },
   { name: 'Check', icon: 'Banknote' },
-  { name: 'Visa', image: '/src/assets/images/payments/visa.png' },
-  { name: 'Mastercard', image: '/src/assets/images/payments/mastercard.png' },
-  { name: 'American Express', image: '/src/assets/images/payments/amex.png' },
-  { name: 'Discover', image: '/src/assets/images/payments/discover.png' },
-  { name: 'CareCredit', image: '/src/assets/images/payments/carecredit.png' }
+  { name: 'Visa', image: visa.src },
+  { name: 'Mastercard', image: mastercard.src },
+  { name: 'American Express', image: amex.src },
+  { name: 'Discover', image: discover.src },
+  { name: 'CareCredit', image: carecredit.src }
 ];
 
 const iconMap: Record<string, any> = {
