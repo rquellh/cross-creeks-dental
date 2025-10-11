@@ -121,7 +121,7 @@ export default function ContactPage() {
             <h3 className="text-2xl font-bold text-brand-deep mb-6">Send Us a Message</h3>
 
             <form onSubmit={handleSubmit} className="space-y-6" action="https://api.web3forms.com/submit" method="POST">
-              <input type="hidden" name="access_key" value={import.meta.env.WEB3_FORMS_ACCESS_KEY} />
+              <input type="hidden" name="access_key" value="fd7b93dd-9f4e-447c-a1ed-0830d892f21c" />
 
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-800 mb-2">
