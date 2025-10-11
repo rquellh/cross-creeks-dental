@@ -60,6 +60,8 @@ export default function ContactPage() {
       if (response.ok) {
         setFormStatus('success');
         e.currentTarget.reset();
+        // Clear success message after 5 seconds
+        setTimeout(() => setFormStatus('idle'), 5000);
       } else {
         setFormStatus('error');
       }
@@ -118,9 +120,8 @@ export default function ContactPage() {
           <div>
             <h3 className="text-2xl font-bold text-brand-deep mb-6">Send Us a Message</h3>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Replace with your actual Web3Forms access key */}
-              <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+            <form onSubmit={handleSubmit} className="space-y-6" action="https://api.web3forms.com/submit" method="POST">
+              <input type="hidden" name="access_key" value={import.meta.env.WEB3_FORMS_ACCESS_KEY} />
 
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-800 mb-2">
