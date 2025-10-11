@@ -82,20 +82,19 @@ const allTeam = [...doctors, ...staff];
       </div>
 
       {/* Facebook Feed */}
-      <div class="w-full lg:w-[500px] flex-shrink-0 flex justify-center lg:justify-start">
-        <div class="w-full h-full">
+      <div class="w-full lg:max-w-[500px] flex-shrink-0 flex justify-center lg:justify-start">
+        <div class="w-full h-full overflow-hidden">
           <div id="fb-root"></div>
           <div
-            class="fb-page w-full"
+            class="fb-page"
             data-href="https://www.facebook.com/crosscreeksdental"
             data-tabs="timeline"
-            data-width=""
+            data-width="500"
             data-height="2000"
             data-small-header="false"
             data-adapt-container-width="true"
             data-hide-cover="false"
             data-show-facepile="true"
-            data-lazy="false"
           >
             <blockquote cite="https://www.facebook.com/crosscreeksdental" class="fb-xfbml-parse-ignore">
               <a href="https://www.facebook.com/crosscreeksdental">Cross Creeks Dental</a>
@@ -107,20 +106,4 @@ const allTeam = [...doctors, ...staff];
   </div>
 </section>
 
-<script>
-  // Load Facebook SDK and force refresh
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0';
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-
-  // Force Facebook to reparse the page when loaded
-  window.addEventListener('load', function() {
-    if (window.FB) {
-      window.FB.XFBML.parse();
-    }
-  });
-</script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v24.0" is:inline></script>
