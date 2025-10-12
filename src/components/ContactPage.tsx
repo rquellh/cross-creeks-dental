@@ -49,7 +49,8 @@ export default function ContactPage() {
     e.preventDefault();
     setFormStatus('submitting');
 
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
 
     try {
       const response = await fetch('https://api.web3forms.com/submit', {
@@ -57,11 +58,11 @@ export default function ContactPage() {
         body: formData
       });
 
-      if (response.ok) {
+      const data = await response.json();
+
+      if (data.success) {
         setFormStatus('success');
-        e.currentTarget.reset();
-        // Clear success message after 5 seconds
-        setTimeout(() => setFormStatus('idle'), 5000);
+        form.reset();
       } else {
         setFormStatus('error');
       }
@@ -184,7 +185,7 @@ export default function ContactPage() {
               </Button>
 
               {formStatus === 'success' && (
-                <p className="text-green-600 text-center">Thank you! Your message has been sent successfully.</p>
+                <p className="text-green-600 text-center"><span className='font-bold'>We got your message!</span> Our team will get back to you during our next business day (Mon-Thurs, 8am-5pm). Need to talk sooner? Give us a call at (614) 866-2895.</p>
               )}
 
               {formStatus === 'error' && (

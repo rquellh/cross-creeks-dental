@@ -26,7 +26,7 @@ export default function Doctors() {
             Our Doctors
           </h2>
           <a
-            href={`${import.meta.env.BASE_URL}/team`}
+            href="/team"
             className="bg-white text-brand-deep px-8 py-3 rounded-md font-semibold hover:bg-bg-off-white transition-colors duration-200"
           >
             Meet the team
