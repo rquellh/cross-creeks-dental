@@ -13,7 +13,7 @@ const socialImage = new URL(image, Astro.site);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-full">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -46,7 +46,7 @@ const socialImage = new URL(image, Astro.site);
 
     <title>{title}</title>
   </head>
-  <body class="antialiased bg-bg-main">
+  <body class="antialiased bg-bg-main min-h-full flex flex-col">
     <slot />
   </body>
 </html>

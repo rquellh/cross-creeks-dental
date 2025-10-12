@@ -7,6 +7,8 @@ import Footer from '../components/Footer.astro';
 
 <Layout title="Insurance & Payment Options - Cross Creeks Dental" description="We accept most major insurance providers and offer an in-house dental savings plan for patients without insurance.">
   <Navigation client:load />
-  <Insurance client:visible />
+  <main class="flex-grow">
+    <Insurance client:visible />
+  </main>
   <Footer />
 </Layout>
