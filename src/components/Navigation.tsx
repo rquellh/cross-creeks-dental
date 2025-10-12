@@ -14,7 +14,7 @@ const NAV_ITEMS = [
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
-  const currentPath = typeof window !== 'undefined' ? window.location.pathname.replace(import.meta.env.BASE_URL, '/').replace(/\/$/, '') || '/' : '/';
+  const currentPath = typeof window !== 'undefined' ? window.location.pathname.replace(/\/$/, '') || '/' : '/';
 
   return (
     <nav className="bg-white shadow-sm sticky top-0 z-50">
@@ -22,7 +22,7 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a href={import.meta.env.BASE_URL} className="block">
+            <a href="/" className="block">
               <img src={logo.src} alt="Cross Creeks Dental" className="h-12" />
             </a>
           </div>
@@ -32,7 +32,7 @@ export default function Navigation() {
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.href}
-                href={`${import.meta.env.BASE_URL}${item.href}`}
+                href={item.href}
                 className="text-brand-deep hover:text-brand-medium focus-visible:text-brand-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-medium focus-visible:ring-offset-2 active:text-brand-deep active:scale-[0.98] transition-all duration-200 font-medium"
               >
                 {item.label}
@@ -79,7 +79,7 @@ export default function Navigation() {
                   return (
                     <a
                       key={item.href}
-                      href={`${import.meta.env.BASE_URL}${item.href}`}
+                      href={item.href}
                       className="flex items-center gap-3 text-text-dark hover:text-brand-medium hover:bg-bg-off-white focus-visible:text-brand-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-medium focus-visible:ring-offset-2 active:text-brand-deep active:bg-brand-deep/10 active:scale-[0.98] transition-all duration-200 px-4 py-3 rounded-lg"
                     >
                       <Icon size={20} className="flex-shrink-0" />

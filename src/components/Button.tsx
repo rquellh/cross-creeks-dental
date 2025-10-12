@@ -38,13 +38,9 @@ export default function Button({
   );
 
   if (href && !disabled) {
-    const finalHref = href.startsWith('http') || href.startsWith('#')
-      ? href
-      : `${import.meta.env.BASE_URL}${href}`;
-
     return (
       <a
-        href={finalHref}
+        href={href}
         className={classes}
         target={target}
         rel={rel}
