@@ -185,7 +185,7 @@ export default function ContactPage() {
               </Button>
 
               {formStatus === 'success' && (
-                <p className="text-green-600 text-center"><span className='font-bold'>We got your message!</span> Our team will get back to you during our next business day (Mon-Thurs, 8am-5pm). Need to talk sooner? Give us a call at (614) 866-2895.</p>
+                <p className="text-green-600 text-center"><span className='font-bold'>We got your message! </span>Our team will get back to you during our next business day (Mon-Thurs, 8am-5pm). Current patients with a dental emergency? Call (614) 866-2895 and follow the prompts for urgent assistance.</p>
               )}
 
               {formStatus === 'error' && (

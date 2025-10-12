@@ -2,10 +2,10 @@
   {
     "id": "preventive-care",
     "title": "Preventive Care",
-    "description": "Prevention is the foundation of good oral health. Our preventive services include routine cleanings, comprehensive exams, digital X-rays, fluoride treatments, and sealants.",
+    "description": "Prevention is the foundation of good oral health. Catching problems early means less invasive treatments, lower costs, and healthier teeth for life.",
     "icon": "Shield",
     "image": "/images/services/preventive.png",
-    "items": ["Regular Cleanings", "Dental Exams", "Digital X-Rays", "Fluoride Treatments", "Dental Sealants"]
+    "items": ["Regular Cleanings", "Deep Cleanings (Scaling & Root Planing)", "Dental Exams", "Digital X-Rays", "Fluoride Treatments", "Dental Sealants"]
   },
   {
     "id": "cosmetic-dentistry",
@@ -13,7 +13,7 @@
     "description": "Enhance your smile with our cosmetic dentistry services designed to improve the appearance of your teeth while maintaining their health and function.",
     "icon": "Sparkles",
     "image": "/images/services/cosmetic.png",
-    "items": ["Teeth Whitening", "Porcelain Veneers", "Bonding", "Smile Makeovers", "Gum Contouring"]
+    "items": ["Teeth Whitening", "Porcelain Veneers/Crowns", "Bonding", "Smile Makeovers", "Tooth Recontouring"]
   },
   {
     "id": "restorative-dentistry",
@@ -21,7 +21,7 @@
     "description": "Restore your smile's function and appearance with our comprehensive restorative treatments using the latest technology and materials.",
     "icon": "Undo2",
     "image": "/images/services/restorative.png",
-    "items": ["Fillings", "Crowns & Bridges", "Dental Implants", "Dentures", "Root Canal Therapy"]
+    "items": ["Fillings", "Crowns & Bridges", "Dental Implants", "Full Dentures", "Partial Dentures", "Inlays & Onlays"]
   },
   {
     "id": "emergency-care",
@@ -29,7 +29,7 @@
     "description": "Dental emergencies can happen anytime. We provide prompt, professional care to address your urgent dental needs and relieve pain.",
     "icon": "AlertCircle",
     "image": "/images/services/emergency.png",
-    "items": ["Toothache Relief", "Broken Tooth Repair", "Lost Filling/Crown", "Abscess Treatment", "Trauma Care"]
+    "items": ["Extractions", "Root Canal Therapy", "Broken Tooth Repair", "Lost Filling/Crown", "Abscess Treatment", "Trauma Care"]
   },
   {
     "id": "family-dentistry",
@@ -40,11 +40,11 @@
     "items": ["Pediatric Dentistry", "Teen Dentistry", "Adult Dentistry", "Senior Care", "Special Needs Care"]
   },
   {
-    "id": "orthodontics",
-    "title": "Orthodontics",
-    "description": "Straighten your teeth and improve your bite with modern orthodontic solutions tailored to your lifestyle and goals.",
+    "id": "specialty-services",
+    "title": "Specialty Services",
+    "description": "Advanced solutions for complex dental needs. From straightening teeth to relieving jaw pain and treating sleep apnea, we provide specialized care tailored to your unique situation.",
     "icon": "Smile",
     "image": "/images/services/orthodontics.png",
-    "items": ["Clear Aligners", "Traditional Braces", "Retainers", "Bite Correction", "Consultations"]
+    "items": ["Clear Aligners", "Retainers", "Night Guards", "Jaw Pain/TMD Treatment", "Oral Sleep Apnea Appliance", "Nitrous Oxide (Laughing Gas)", "Oral Sedation"]
   }
 ]
