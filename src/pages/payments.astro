@@ -7,6 +7,8 @@ import Footer from '../components/Footer.astro';
 
 <Layout title="Payment Options - Cross Creeks Dental" description="We accept various payment methods including cash, check, major credit cards, and offer financing options through CareCredit and LendingClub.">
   <Navigation client:load />
-  <Payments client:visible />
+  <main class="flex-grow">
+    <Payments client:visible />
+  </main>
   <Footer />
 </Layout>

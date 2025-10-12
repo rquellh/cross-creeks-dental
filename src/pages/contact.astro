@@ -7,6 +7,8 @@ import Footer from '../components/Footer.astro';
 
 <Layout title="Contact Us - Cross Creeks Dental" description="Get in touch with Cross Creeks Dental. We're here to answer your questions and schedule your appointment.">
   <Navigation client:load />
-  <ContactPage client:load />
+  <main class="flex-grow">
+    <ContactPage client:load />
+  </main>
   <Footer />
 </Layout>

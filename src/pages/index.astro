@@ -12,11 +12,13 @@ import Footer from '../components/Footer.astro';
 
 <Layout title="Cross Creeks Dental | Dentist in Pickerington, OH | Gentle, Judgment-Free Care">
   <Navigation client:load />
-  <Hero />
-  <GoogleReviews client:visible />
-  <Services />
-  <Doctors client:visible />
-  <WhyChooseUs client:visible />
-  <Insurance client:visible />
+  <main class="flex-grow">
+    <Hero />
+    <GoogleReviews client:visible />
+    <Services />
+    <Doctors client:visible />
+    <WhyChooseUs client:visible />
+    <Insurance client:visible />
+  </main>
   <Footer />
 </Layout>

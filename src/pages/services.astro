@@ -8,7 +8,9 @@ import Footer from '../components/Footer.astro';
 
 <Layout title="Our Services - Cross Creeks Dental" description="Comprehensive dental services including preventive care, cosmetic dentistry, and restorative procedures.">
   <Navigation client:load />
-  <ServicesDetail client:visible />
-  <BeforeAfterGallery client:visible />
+  <main class="flex-grow">
+    <ServicesDetail client:visible />
+    <BeforeAfterGallery client:visible />
+  </main>
   <Footer />
 </Layout>
