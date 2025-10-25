@@ -5,6 +5,9 @@ import Button from './Button';
 ---
 
 <section class="relative bg-bg-main-darker text-white overflow-hidden py-40">
+  <!-- Floating dental icons canvas -->
+  <canvas id="dental-icons-canvas" class="sm:block absolute inset-0 w-full h-full pointer-events-none md:hidden"></canvas>
+
   <div class="hidden sm:block absolute left-[50%] md:left-[48%] top-0 bottom-0 w-[50%] md:w-[52%] max-w-4xl">
     <Image
       src={womanSmiling}
@@ -38,3 +41,14 @@ import Button from './Button';
     </div>
   </div>
 </section>
+
+<script>
+  import { initFloatingIcons } from '../utils/floatingTeeth';
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFloatingIcons);
+  } else {
+    initFloatingIcons();
+  }
+</script>
