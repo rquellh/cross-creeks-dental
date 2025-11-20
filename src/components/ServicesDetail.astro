@@ -39,7 +39,7 @@ const iconMap: Record<string, any> = {
 
         return (
           <div
-            key={service.id}
+            
             class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
           >
             <div class="flex justify-center items-center mb-4">
@@ -53,7 +53,7 @@ const iconMap: Record<string, any> = {
             </p>
             <ul class="space-y-2">
               {service.items.map((item) => (
-                <li key={item} class="flex items-center text-sm text-gray-700">
+                <li  class="flex items-center text-sm text-gray-700">
                   <svg class="w-4 h-4 text-brand-medium mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                   </svg>
