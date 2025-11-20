@@ -5,7 +5,10 @@ import Insurance from '../components/Insurance';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Insurance & Payment Options - Cross Creeks Dental" description="We accept most major insurance providers and offer an in-house dental savings plan for patients without insurance.">
+<Layout
+  title="Insurance & Payment Options - Cross Creeks Dental"
+  description="Dentist in Pickerington accepting Delta Dental PPO/Premier, MetLife, Guardian, Anthem, United Healthcare, Aetna, Cigna, Principal, Superior, Humana, Careington, Connection, and most major insurance plans. In-house dental savings plan available."
+>
   <Navigation client:load />
   <main class="flex-grow">
     <Insurance client:visible />

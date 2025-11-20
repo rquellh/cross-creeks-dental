@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import businessInfo from '../data/businessInfo.json';
+import reviewsMetadata from '../data/reviews-metadata.json';
 
 interface Props {
   title: string;
@@ -10,6 +12,92 @@ interface Props {
 const { title, description = 'Cross Creeks Dental - Quality dental care in a comfortable environment', image = '/og-image.png' } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImage = new URL(image, Astro.site);
+
+// LocalBusiness Schema.org structured data
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  "name": businessInfo.name,
+  "image": socialImage.toString(),
+  "url": Astro.site?.toString(),
+  "telephone": businessInfo.phone,
+  "email": businessInfo.email,
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": businessInfo.address.street,
+    "addressLocality": businessInfo.address.city,
+    "addressRegion": businessInfo.address.state,
+    "postalCode": businessInfo.address.zip,
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 39.9199873,
+    "longitude": -82.7839474
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+      "opens": "08:00",
+      "closes": "17:00"
+    }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": reviewsMetadata.averageRating.toString(),
+    "reviewCount": reviewsMetadata.totalReviews.toString()
+  },
+  "paymentAccepted": "Cash, Credit Card, Insurance",
+  "currenciesAccepted": "USD",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Dental Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Preventive Dentistry",
+          "description": "Routine cleanings, exams, and preventive care"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Cosmetic Dentistry",
+          "description": "Teeth whitening, veneers, and smile makeovers"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Restorative Dentistry",
+          "description": "Fillings, crowns, bridges, and dental implants"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Orthodontics",
+          "description": "Braces and Invisalign clear aligners"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Emergency Dental Care",
+          "description": "Same-day emergency dental services"
+        }
+      }
+    ]
+  }
+};
 ---
 
 <!doctype html>
@@ -43,6 +131,9 @@ const socialImage = new URL(image, Astro.site);
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap&display=swap" rel="stylesheet">
+
+    <!-- Schema.org LocalBusiness structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
 
     <title>{title}</title>
   </head>

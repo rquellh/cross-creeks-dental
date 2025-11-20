@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://crosscreeksdental.com/sitemap-index.xml
+Sitemap: https://www.crosscreeksdental.com/sitemap-index.xml
