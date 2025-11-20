@@ -1,0 +1,18 @@
+---
+import BeforeAfterSliderClient from './BeforeAfterSliderClient';
+
+interface Props {
+  beforeImage: string;
+  afterImage: string;
+  title: string;
+}
+
+const { beforeImage, afterImage, title } = Astro.props;
+---
+
+<BeforeAfterSliderClient
+  beforeImage={beforeImage}
+  afterImage={afterImage}
+  title={title}
+  client:visible
+/>

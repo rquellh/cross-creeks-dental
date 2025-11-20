@@ -1,0 +1,45 @@
+---
+import logo from '../assets/images/logo.svg';
+import Button from './Button.astro';
+import MobileMenu from './MobileMenu';
+
+const NAV_ITEMS = [
+  { href: '/', label: 'Home' },
+  { href: '/team', label: 'Our Team' },
+  { href: '/services', label: 'Services' },
+  { href: '/insurance', label: 'Insurance' },
+  { href: '/payments', label: 'Payments' },
+  { href: '/contact', label: 'Contact' },
+];
+---
+
+<nav class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a href="/" class="block">
+          <img src={logo.src} alt="Cross Creeks Dental" class="h-12" />
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center space-x-8">
+        {NAV_ITEMS.map((item) => (
+          <a
+            href={item.href}
+            class="text-brand-deep hover:text-brand-medium focus-visible:text-brand-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-medium focus-visible:ring-offset-2 active:text-brand-deep active:scale-[0.98] transition-all duration-200 font-medium"
+          >
+            {item.label}
+          </a>
+        ))}
+        <Button href="/contact">
+          Book Appointment
+        </Button>
+      </div>
+
+      <!-- Mobile Menu (React island for interactivity) -->
+      <MobileMenu client:load />
+    </div>
+  </div>
+</nav>

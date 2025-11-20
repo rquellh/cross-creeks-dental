@@ -1,0 +1,50 @@
+---
+import servicesData from '../data/servicesDetail.json';
+import Button from './Button.astro';
+import ServicesCarouselClient from './ServicesCarouselClient';
+
+// Import service images
+import preventiveImg from '../assets/images/services/preventive.png';
+import cosmeticImg from '../assets/images/services/cosmetic.png';
+import restorativeImg from '../assets/images/services/restorative.png';
+import emergencyImg from '../assets/images/services/emergency.png';
+import familyImg from '../assets/images/services/family.png';
+import orthodonticsImg from '../assets/images/services/orthodontics.png';
+
+const serviceImagesMap: Record<string, any> = {
+  '/images/services/preventive.png': preventiveImg.src,
+  '/images/services/cosmetic.png': cosmeticImg.src,
+  '/images/services/restorative.png': restorativeImg.src,
+  '/images/services/emergency.png': emergencyImg.src,
+  '/images/services/family.png': familyImg.src,
+  '/images/services/orthodontics.png': orthodonticsImg.src,
+};
+
+interface Service {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  image: string;
+  items: string[];
+}
+
+const services: Service[] = servicesData;
+---
+
+<section class="py-16 bg-bg-main">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+    <!-- Header -->
+    <div class="mb-12 flex justify-between items-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-brand-deep" style="font-family: var(--font-family-display)">
+        Our Services
+      </h2>
+      <Button variant="secondary" href="/services">
+        All Services
+      </Button>
+    </div>
+
+    <!-- Services carousel -->
+    <ServicesCarouselClient services={services} serviceImages={serviceImagesMap} client:load />
+  </div>
+</section>

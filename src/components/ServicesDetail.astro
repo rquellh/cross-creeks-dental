@@ -1,0 +1,75 @@
+---
+import { Shield, Sparkles, Undo2, AlertCircle, Users, Smile } from 'lucide-react';
+import servicesData from '../data/servicesDetail.json';
+import Button from './Button.astro';
+
+interface Service {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  image: string;
+  items: string[];
+}
+
+const services: Service[] = servicesData;
+
+const iconMap: Record<string, any> = {
+  Shield,
+  Sparkles,
+  Undo2,
+  AlertCircle,
+  Users,
+  Smile
+};
+---
+
+<section class="py-16 bg-bg-main">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl md:text-4xl font-bold text-brand-deep mb-4 text-center" style="font-family: var(--font-family-display)">
+      Our Services
+    </h2>
+    <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+      We offer a comprehensive range of dental services using the latest technology and techniques to ensure your comfort and satisfaction.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      {services.map((service) => {
+        const IconComponent = iconMap[service.icon];
+
+        return (
+          <div
+            key={service.id}
+            class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
+          >
+            <div class="flex justify-center items-center mb-4">
+              <IconComponent className="w-12 h-12 text-brand-deep" />
+            </div>
+            <h3 class="text-xl font-bold text-brand-deep mb-3 text-center">
+              {service.title}
+            </h3>
+            <p class="text-gray-600 mb-4 text-sm">
+              {service.description}
+            </p>
+            <ul class="space-y-2">
+              {service.items.map((item) => (
+                <li key={item} class="flex items-center text-sm text-gray-700">
+                  <svg class="w-4 h-4 text-brand-medium mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })}
+    </div>
+
+    <div class="text-center mt-12">
+      <Button href="/contact">
+        Schedule an Appointment
+      </Button>
+    </div>
+  </div>
+</section>
