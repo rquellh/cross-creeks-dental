@@ -3,51 +3,6 @@ import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import businessInfo from "../data/businessInfo.json";
 const currentYear = new Date().getFullYear();
 
-// Structured data for Local Business
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "Dentist",
-  "name": businessInfo.name,
-  "image": "https://crosscreeksdental.com/og-image.png",
-  "@id": "https://crosscreeksdental.com",
-  "url": "https://crosscreeksdental.com",
-  "telephone": businessInfo.phone,
-  "email": businessInfo.email,
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": businessInfo.address.street,
-    "addressLocality": businessInfo.address.city,
-    "addressRegion": businessInfo.address.state,
-    "postalCode": businessInfo.address.zip,
-    "addressCountry": "US"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 39.8844,
-    "longitude": -82.7540
-  },
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
-      "opens": "08:00",
-      "closes": "17:00"
-    }
-  ],
-  "sameAs": [
-    "https://www.facebook.com/crosscreeksdental/",
-    "https://www.instagram.com/crosscreeksdental/",
-    "https://www.tiktok.com/@crosscreeksdental",
-    "https://maps.google.com/maps?cid=11133590865144049245"
-  ],
-  "priceRange": "$$",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "300+"
-  }
-};
-
 const quickLinks = [
   { href: '/team', label: 'Our Team' },
   { href: '/services', label: 'Services' },
@@ -79,9 +34,6 @@ const socialLinks = [
   }
 ];
 ---
-
-<!-- Structured Data -->
-<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
 <footer class="bg-bg-main-darker text-brand-deep py-12">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
