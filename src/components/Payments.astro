@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import { CreditCard, DollarSign, FileText, Banknote } from "lucide-react";
 import Button from "./Button.astro";
 import visa from "../assets/images/payments/visa.png";
@@ -10,11 +11,11 @@ import carecredit from "../assets/images/payments/carecredit.png";
 const paymentMethods = [
   { name: "Cash", icon: "DollarSign" },
   { name: "Check", icon: "Banknote" },
-  { name: "Visa", image: visa.src },
-  { name: "Mastercard", image: mastercard.src },
-  { name: "American Express", image: amex.src },
-  { name: "Discover", image: discover.src },
-  { name: "CareCredit", image: carecredit.src },
+  { name: "Visa", image: visa },
+  { name: "Mastercard", image: mastercard },
+  { name: "American Express", image: amex },
+  { name: "Discover", image: discover },
+  { name: "CareCredit", image: carecredit },
 ];
 
 const iconMap: Record<string, any> = {
@@ -49,7 +50,7 @@ const iconMap: Record<string, any> = {
             >
               <div class="flex justify-center items-center mb-3 h-12">
                 {method.image ? (
-                  <img
+                  <Image
                     src={method.image}
                     alt={`${method.name} logo`}
                     class="max-h-12 max-w-full object-contain"

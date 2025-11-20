@@ -1,4 +1,5 @@
 ---
+import { getImage } from 'astro:assets';
 import servicesData from '../data/servicesDetail.json';
 import Button from './Button.astro';
 import ServicesCarouselClient from './ServicesCarouselClient';
@@ -11,14 +12,21 @@ import emergencyImg from '../assets/images/services/emergency.png';
 import familyImg from '../assets/images/services/family.png';
 import orthodonticsImg from '../assets/images/services/orthodontics.png';
 
-const serviceImagesMap: Record<string, any> = {
-  '/images/services/preventive.png': preventiveImg.src,
-  '/images/services/cosmetic.png': cosmeticImg.src,
-  '/images/services/restorative.png': restorativeImg.src,
-  '/images/services/emergency.png': emergencyImg.src,
-  '/images/services/family.png': familyImg.src,
-  '/images/services/orthodontics.png': orthodonticsImg.src,
+const serviceImagesRaw: Record<string, any> = {
+  '/images/services/preventive.png': preventiveImg,
+  '/images/services/cosmetic.png': cosmeticImg,
+  '/images/services/restorative.png': restorativeImg,
+  '/images/services/emergency.png': emergencyImg,
+  '/images/services/family.png': familyImg,
+  '/images/services/orthodontics.png': orthodonticsImg,
 };
+
+// Optimize images using getImage
+const serviceImagesMap: Record<string, string> = {};
+for (const [key, img] of Object.entries(serviceImagesRaw)) {
+  const optimizedImage = await getImage({ src: img });
+  serviceImagesMap[key] = optimizedImage.src;
+}
 
 interface Service {
   id: string;

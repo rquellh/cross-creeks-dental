@@ -1,5 +1,6 @@
 ---
-import BeforeAfterSlider from './BeforeAfterSlider.astro';
+import { getImage } from 'astro:assets';
+import BeforeAfterSliderClient from './BeforeAfterSliderClient';
 import beforeAfterData from '../data/beforeAfter.json';
 
 // Import all before/after images
@@ -20,24 +21,31 @@ import fillingsAfter from '../assets/images/before-after/fillings-after.png';
 import onlaysBefore from '../assets/images/before-after/onlays-before.png';
 import onlaysAfter from '../assets/images/before-after/onlays-after.png';
 
-const imageMap: Record<string, any> = {
-  '/src/assets/images/before-after/whitening-before.png': whiteningBefore.src,
-  '/src/assets/images/before-after/whitening-after.png': whiteningAfter.src,
-  '/src/assets/images/before-after/crowns-before.png': crownsBefore.src,
-  '/src/assets/images/before-after/crowns-after.png': crownsAfter.src,
-  '/src/assets/images/before-after/cosmetic-bonding-before.png': bondingBefore.src,
-  '/src/assets/images/before-after/cosmetic-bonding-after.png': bondingAfter.src,
-  '/src/assets/images/before-after/broken-tooth-before.png': brokenBefore.src,
-  '/src/assets/images/before-after/broken-tooth-after.png': brokenAfter.src,
-  '/src/assets/images/before-after/bridge-before.png': bridgeBefore.src,
-  '/src/assets/images/before-after/bridge-after.png': bridgeAfter.src,
-  '/src/assets/images/before-after/dentures-before.png': denturesBefore.src,
-  '/src/assets/images/before-after/dentures-after.png': denturesAfter.src,
-  '/src/assets/images/before-after/fillings-before.png': fillingsBefore.src,
-  '/src/assets/images/before-after/fillings-after.png': fillingsAfter.src,
-  '/src/assets/images/before-after/onlays-before.png': onlaysBefore.src,
-  '/src/assets/images/before-after/onlays-after.png': onlaysAfter.src,
+const imageMapRaw: Record<string, any> = {
+  '/src/assets/images/before-after/whitening-before.png': whiteningBefore,
+  '/src/assets/images/before-after/whitening-after.png': whiteningAfter,
+  '/src/assets/images/before-after/crowns-before.png': crownsBefore,
+  '/src/assets/images/before-after/crowns-after.png': crownsAfter,
+  '/src/assets/images/before-after/cosmetic-bonding-before.png': bondingBefore,
+  '/src/assets/images/before-after/cosmetic-bonding-after.png': bondingAfter,
+  '/src/assets/images/before-after/broken-tooth-before.png': brokenBefore,
+  '/src/assets/images/before-after/broken-tooth-after.png': brokenAfter,
+  '/src/assets/images/before-after/bridge-before.png': bridgeBefore,
+  '/src/assets/images/before-after/bridge-after.png': bridgeAfter,
+  '/src/assets/images/before-after/dentures-before.png': denturesBefore,
+  '/src/assets/images/before-after/dentures-after.png': denturesAfter,
+  '/src/assets/images/before-after/fillings-before.png': fillingsBefore,
+  '/src/assets/images/before-after/fillings-after.png': fillingsAfter,
+  '/src/assets/images/before-after/onlays-before.png': onlaysBefore,
+  '/src/assets/images/before-after/onlays-after.png': onlaysAfter,
 };
+
+// Optimize images using getImage
+const imageMap: Record<string, string> = {};
+for (const [key, img] of Object.entries(imageMapRaw)) {
+  const optimizedImage = await getImage({ src: img });
+  imageMap[key] = optimizedImage.src;
+}
 ---
 
 <section class="py-16 bg-bg-main">
@@ -51,8 +59,8 @@ const imageMap: Record<string, any> = {
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       {beforeAfterData.map((item) => (
-        <BeforeAfterSlider
-          
+        <BeforeAfterSliderClient
+          client:load
           title={item.title}
           beforeImage={imageMap[item.beforeImage] || item.beforeImage}
           afterImage={imageMap[item.afterImage] || item.afterImage}
