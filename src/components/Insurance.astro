@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import { Shield } from 'lucide-react';
 import Button from './Button.astro';
 
@@ -17,18 +18,18 @@ import careington from '../assets/images/insurance/careington.png';
 import connection from '../assets/images/insurance/connection.png';
 
 const insuranceProviders = [
-  { name: 'DeltaDental PPO/Premier', image: deltaDental.src },
-  { name: 'Metlife', image: metlife.src },
-  { name: 'Guardian', image: guardian.src },
-  { name: 'Anthem', image: anthem.src },
-  { name: 'United Healthcare', image: unitedHealthcare.src },
-  { name: 'Aetna', image: aetna.src },
-  { name: 'Cigna', image: cigna.src },
-  { name: 'Principal', image: principal.src },
-  { name: 'Superior', image: superior.src },
-  { name: 'Humana', image: humana.src },
-  { name: 'Careington', image: careington.src },
-  { name: 'Connection', image: connection.src }
+  { name: 'DeltaDental PPO/Premier', image: deltaDental },
+  { name: 'Metlife', image: metlife },
+  { name: 'Guardian', image: guardian },
+  { name: 'Anthem', image: anthem },
+  { name: 'United Healthcare', image: unitedHealthcare },
+  { name: 'Aetna', image: aetna },
+  { name: 'Cigna', image: cigna },
+  { name: 'Principal', image: principal },
+  { name: 'Superior', image: superior },
+  { name: 'Humana', image: humana },
+  { name: 'Careington', image: careington },
+  { name: 'Connection', image: connection }
 ];
 ---
 
@@ -48,7 +49,7 @@ const insuranceProviders = [
         >
           <div class="flex justify-center items-center mb-3 h-12">
             {provider.image ? (
-              <img
+              <Image
                 src={provider.image}
                 alt={`${provider.name} logo`}
                 class="max-h-12 max-w-full object-contain"
