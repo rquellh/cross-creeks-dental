@@ -1,12 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navigation from '../components/Navigation';
+import Navigation from '../components/Navigation.astro';
 import Hero from '../components/Hero.astro';
-import GoogleReviews from '../components/GoogleReviews';
+import GoogleReviews from '../components/GoogleReviews.astro';
 import Services from '../components/Services.astro';
-import Doctors from '../components/Doctors';
-import WhyChooseUs from '../components/WhyChooseUs';
-import Insurance from '../components/Insurance';
+import Doctors from '../components/Doctors.astro';
+import WhyChooseUs from '../components/WhyChooseUs.astro';
+import Insurance from '../components/Insurance.astro';
 import Footer from '../components/Footer.astro';
 ---
 
@@ -14,14 +14,14 @@ import Footer from '../components/Footer.astro';
   title="Cross Creeks Dental | Dentist in Pickerington, OH | Gentle, Judgment-Free Care"
   description="Dentist in Pickerington, OH accepting new patients. We accept Delta Dental PPO/Premier, MetLife, Guardian, Anthem, United Healthcare, Aetna, Cigna, Principal, Superior, Humana, Careington, Connection, and most insurance plans. Offering Invisalign, dental implants, and emergency dental care."
 >
-  <Navigation client:load />
+  <Navigation />
   <main class="flex-grow">
     <Hero />
-    <GoogleReviews client:visible />
+    <GoogleReviews />
     <Services />
-    <Doctors client:visible />
-    <WhyChooseUs client:visible />
-    <Insurance client:visible />
+    <Doctors />
+    <WhyChooseUs />
+    <Insurance />
   </main>
   <Footer />
 </Layout>

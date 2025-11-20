@@ -1,8 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navigation from '../components/Navigation';
-import ServicesDetail from '../components/ServicesDetail';
-import BeforeAfterGallery from '../components/BeforeAfterGallery';
+import Navigation from '../components/Navigation.astro';
+import ServicesDetail from '../components/ServicesDetail.astro';
+import BeforeAfterGallery from '../components/BeforeAfterGallery.astro';
 import Footer from '../components/Footer.astro';
 ---
 
@@ -10,10 +10,10 @@ import Footer from '../components/Footer.astro';
   title="Our Services - Cross Creeks Dental"
   description="Comprehensive dental services in Pickerington, OH: teeth cleaning, tooth extraction, dental implants, dentures, braces, Invisalign, deep cleaning, and cosmetic dentistry. Accepting most insurance plans."
 >
-  <Navigation client:load />
+  <Navigation />
   <main class="flex-grow">
-    <ServicesDetail client:visible />
-    <BeforeAfterGallery client:visible />
+    <ServicesDetail />
+    <BeforeAfterGallery />
   </main>
   <Footer />
 </Layout>

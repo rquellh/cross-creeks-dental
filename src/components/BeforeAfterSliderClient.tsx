@@ -1,13 +1,13 @@
 import { useState, useRef, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-interface BeforeAfterSliderProps {
+interface BeforeAfterSliderClientProps {
   beforeImage: string;
   afterImage: string;
   title: string;
 }
 
-export default function BeforeAfterSlider({ beforeImage, afterImage, title }: BeforeAfterSliderProps) {
+export default function BeforeAfterSliderClient({ beforeImage, afterImage, title }: BeforeAfterSliderClientProps) {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
