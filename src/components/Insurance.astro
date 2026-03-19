@@ -7,7 +7,7 @@ import Button from './Button.astro';
 import deltaDental from '../assets/images/insurance/delta-dental.png';
 import metlife from '../assets/images/insurance/metlife.png';
 import guardian from '../assets/images/insurance/guardian.png';
-import anthem from '../assets/images/insurance/anthem.png';
+// import anthem from '../assets/images/insurance/anthem.png';
 import unitedHealthcare from '../assets/images/insurance/united-healthcare.png';
 import aetna from '../assets/images/insurance/aetna.png';
 import cigna from '../assets/images/insurance/cigna.png';
@@ -21,7 +21,7 @@ const insuranceProviders = [
   { name: 'DeltaDental PPO/Premier', image: deltaDental },
   { name: 'Metlife', image: metlife },
   { name: 'Guardian', image: guardian },
-  { name: 'Anthem', image: anthem },
+  // { name: 'Anthem', image: anthem },
   { name: 'United Healthcare', image: unitedHealthcare },
   { name: 'Aetna', image: aetna },
   { name: 'Cigna', image: cigna },
@@ -42,10 +42,10 @@ const insuranceProviders = [
       We work with most major insurance providers. Don't see your insurance provider listed? We might have added your provider. Contact our financial coordinator for more details.
     </p>
 
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+    <div class="flex flex-wrap justify-center gap-6 max-w-6xl mx-auto">
       {insuranceProviders.map((provider) => (
         <div
-          class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-md transition-shadow duration-200"
+          class="bg-white p-6 rounded-lg text-center shadow-sm hover:shadow-md transition-shadow duration-200 w-[calc(50%-12px)] md:w-[calc(33.333%-16px)] lg:w-[calc(25%-18px)]"
         >
           <div class="flex justify-center items-center mb-3 h-12">
             {provider.image ? (

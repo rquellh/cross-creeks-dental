@@ -118,14 +118,21 @@ export function initFloatingIcons() {
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
 
-    // Initialize icons
-    floatingIcons = [];
-    const iconCount = 12;
+    if (floatingIcons.length === 0) {
+      // Initialize icons only on first load
+      const iconCount = 12;
 
-    for (let i = 0; i < iconCount; i++) {
-      const x = Math.random() * (canvas.width - 100) + 50;
-      const y = Math.random() * (canvas.height - 100) + 50;
-      floatingIcons.push(new FloatingIcon(canvas, icons.tooth, x, y));
+      for (let i = 0; i < iconCount; i++) {
+        const x = Math.random() * (canvas.width - 100) + 50;
+        const y = Math.random() * (canvas.height - 100) + 50;
+        floatingIcons.push(new FloatingIcon(canvas, icons.tooth, x, y));
+      }
+    } else {
+      // Clamp existing icons to new bounds
+      floatingIcons.forEach(icon => {
+        icon.x = Math.min(icon.x, canvas.width - icon.radius);
+        icon.y = Math.min(icon.y, canvas.height - icon.radius);
+      });
     }
   }
 
