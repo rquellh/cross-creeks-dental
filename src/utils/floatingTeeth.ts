@@ -113,13 +113,13 @@ export function initFloatingIcons() {
   if (!ctx) return;
 
   let floatingIcons: FloatingIcon[] = [];
+  let animationId: number | null = null;
 
   function resize() {
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
 
     if (floatingIcons.length === 0) {
-      // Initialize icons only on first load
       const iconCount = 12;
 
       for (let i = 0; i < iconCount; i++) {
@@ -128,7 +128,6 @@ export function initFloatingIcons() {
         floatingIcons.push(new FloatingIcon(canvas, icons.tooth, x, y));
       }
     } else {
-      // Clamp existing icons to new bounds
       floatingIcons.forEach(icon => {
         icon.x = Math.min(icon.x, canvas.width - icon.radius);
         icon.y = Math.min(icon.y, canvas.height - icon.radius);
@@ -144,10 +143,30 @@ export function initFloatingIcons() {
     floatingIcons.forEach(icon => icon.update(floatingIcons));
     floatingIcons.forEach(icon => icon.draw(ctx));
 
-    requestAnimationFrame(animate);
+    animationId = requestAnimationFrame(animate);
   }
+
+  function startAnimation() {
+    if (animationId === null) animate();
+  }
+
+  function stopAnimation() {
+    if (animationId !== null) {
+      cancelAnimationFrame(animationId);
+      animationId = null;
+    }
+  }
+
+  // Pause when off-screen to save CPU/battery
+  const observer = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) {
+      startAnimation();
+    } else {
+      stopAnimation();
+    }
+  });
+  observer.observe(canvas);
 
   resize();
   window.addEventListener('resize', resize);
-  animate();
 }

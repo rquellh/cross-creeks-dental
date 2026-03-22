@@ -2,15 +2,7 @@
 import { Shield, Sparkles, Undo2, AlertCircle, Users, Smile } from 'lucide-react';
 import servicesData from '../data/servicesDetail.json';
 import Button from './Button.astro';
-
-interface Service {
-  id: string;
-  title: string;
-  description: string;
-  icon: string;
-  image: string;
-  items: string[];
-}
+import type { Service } from '../types';
 
 const services: Service[] = servicesData;
 
@@ -26,7 +18,7 @@ const iconMap: Record<string, any> = {
 
 <section class="py-16 bg-bg-main">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h1 class="text-4xl md:text-5xl font-bold text-brand-deep mb-4 text-center" style="font-family: var(--font-family-display)">
+    <h1 class="text-4xl md:text-5xl font-bold text-brand-deep mb-4 text-center font-heading">
       Our Services
     </h1>
     <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
@@ -39,7 +31,6 @@ const iconMap: Record<string, any> = {
 
         return (
           <div
-            
             class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
           >
             <div class="flex justify-center items-center mb-4">
@@ -53,7 +44,7 @@ const iconMap: Record<string, any> = {
             </p>
             <ul class="space-y-2">
               {service.items.map((item) => (
-                <li  class="flex items-center text-sm text-gray-700">
+                <li class="flex items-center text-sm text-gray-700">
                   <svg class="w-4 h-4 text-brand-medium mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                   </svg>

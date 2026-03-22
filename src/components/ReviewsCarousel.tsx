@@ -98,19 +98,6 @@ export default function ReviewsCarousel({ reviews }: ReviewsCarouselProps) {
         </div>
       </div>
 
-      <style>{`
-        .flickity-page-dots .dot {
-          background: rgb(209 213 219);
-          width: 10px;
-          height: 10px;
-          transition: all 0.3s;
-        }
-        .flickity-page-dots .dot.is-selected {
-          background: var(--color-brand-deep);
-          width: 32px;
-          border-radius: 9999px;
-        }
-      `}</style>
     </>
   );
 }
