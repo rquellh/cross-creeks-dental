@@ -21,17 +21,14 @@ const doctors: Doctor[] = doctorsData;
 
 <section class="py-16 bg-bg-main">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Header -->
-    <div class="mb-6 flex flex-col items-center">
-      <h2 class="text-4xl md:text-5xl font-bold text-brand-deep text-center" style="font-family: var(--font-family-display)">
-        Our Doctors
-      </h2>
-    </div>
+    <h2 class="text-4xl md:text-5xl font-bold text-brand-deep text-center mb-6 font-heading">
+      Our Doctors
+    </h2>
 
     <!-- Doctors Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 max-w-4xl mx-auto">
       {doctors.map((doctor) => (
-        <div  class="flex flex-col items-center">
+        <div class="flex flex-col items-center">
           <!-- Doctor photo with circle-face effect -->
           <div class="relative inline-block mb-6 mt-[16px] md:mt-[24px]">
             <div class="absolute bottom-0 left-1/2 -translate-x-1/2 rounded-full bg-bg-main-darker w-52 h-52 md:w-80 md:h-80"></div>
@@ -42,12 +39,9 @@ const doctors: Doctor[] = doctorsData;
             />
           </div>
 
-          <!-- Name and title -->
-          <div class="text-center">
-            <h3 class="text-2xl font-bold text-brand-deep mb-1">
-              {doctor.name}
-            </h3>
-          </div>
+          <h3 class="text-2xl font-bold text-brand-deep mb-1 text-center">
+            {doctor.name}
+          </h3>
         </div>
       ))}
     </div>

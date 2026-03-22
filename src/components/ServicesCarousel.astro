@@ -2,6 +2,7 @@
 import { getImage } from 'astro:assets';
 import servicesData from '../data/servicesDetail.json';
 import ServicesCarouselClient from './ServicesCarouselClient';
+import type { Service } from '../types';
 
 // Import service images
 import preventiveImg from '../assets/images/services/preventive.png';
@@ -20,33 +21,20 @@ const serviceImagesRaw: Record<string, any> = {
   '/images/services/orthodontics.png': orthodonticsImg,
 };
 
-// Optimize images using getImage
-const serviceImagesMap: Record<string, string> = {};
-for (const [key, img] of Object.entries(serviceImagesRaw)) {
-  const optimizedImage = await getImage({ src: img });
-  serviceImagesMap[key] = optimizedImage.src;
-}
-
-interface Service {
-  id: string;
-  title: string;
-  description: string;
-  icon: string;
-  image: string;
-  items: string[];
-}
+const serviceImagesMap: Record<string, string> = Object.fromEntries(
+  await Promise.all(
+    Object.entries(serviceImagesRaw).map(async ([key, img]) => [key, (await getImage({ src: img })).src])
+  )
+);
 
 const services: Service[] = servicesData;
 ---
 
 <section class="py-16 bg-bg-main">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
-    <!-- Header -->
-    <div class="mb-12 flex flex-col items-center">
-      <h2 class="text-4xl md:text-5xl font-bold text-brand-deep text-center" style="font-family: var(--font-family-display)">
-        Our Services
-      </h2>
-    </div>
+    <h2 class="text-4xl md:text-5xl font-bold text-brand-deep text-center mb-12 font-heading">
+      Our Services
+    </h2>
 
     <!-- Services carousel -->
     <ServicesCarouselClient services={services} serviceImages={serviceImagesMap} client:load />
