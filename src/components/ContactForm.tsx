@@ -1,4 +1,4 @@
-import { useState, type JSX } from 'react';
+import { useState } from 'react';
 
 export default function ContactForm() {
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
