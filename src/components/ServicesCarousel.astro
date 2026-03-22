@@ -1,7 +1,6 @@
 ---
 import { getImage } from 'astro:assets';
 import servicesData from '../data/servicesDetail.json';
-import Button from './Button.astro';
 import ServicesCarouselClient from './ServicesCarouselClient';
 
 // Import service images
@@ -43,13 +42,10 @@ const services: Service[] = servicesData;
 <section class="py-16 bg-bg-main">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
     <!-- Header -->
-    <div class="mb-12 flex justify-between items-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-brand-deep" style="font-family: var(--font-family-display)">
+    <div class="mb-12 flex flex-col items-center">
+      <h2 class="text-4xl md:text-5xl font-bold text-brand-deep text-center" style="font-family: var(--font-family-display)">
         Our Services
       </h2>
-      <Button variant="secondary" href="/services">
-        All Services
-      </Button>
     </div>
 
     <!-- Services carousel -->
