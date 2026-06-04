@@ -10,13 +10,16 @@
     "full": "1555 Cross Creeks Blvd, Pickerington, OH 43147"
   },
   "hours": {
-    "monday": "8:00 AM - 5:00 PM",
-    "tuesday": "8:00 AM - 5:00 PM",
-    "wednesday": "8:00 AM - 5:00 PM",
-    "thursday": "8:00 AM - 5:00 PM",
-    "friday": "Closed",
-    "saturday": "Closed",
-    "sunday": "Closed",
-    "display": "Mon - Thurs: 8:00 AM - 5:00 PM"
+    "display": "Mon - Thurs: 8:00 AM - 5:00 PM",
+    "timezone": "America/New_York",
+    "schedule": {
+      "sunday": null,
+      "monday": { "open": "08:00", "close": "17:00" },
+      "tuesday": { "open": "08:00", "close": "17:00" },
+      "wednesday": { "open": "08:00", "close": "17:00" },
+      "thursday": { "open": "08:00", "close": "17:00" },
+      "friday": null,
+      "saturday": null
+    }
   }
 }

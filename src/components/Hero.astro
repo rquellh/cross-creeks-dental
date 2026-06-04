@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import { Clock, Phone } from 'lucide-react';
 import womanSmiling from '../assets/images/woman-smiling.png';
 import Button from './Button.astro';
 import businessInfo from '../data/businessInfo.json';
@@ -7,7 +8,7 @@ import businessInfo from '../data/businessInfo.json';
 const telHref = `tel:+1${businessInfo.phone.replace(/\D/g, '')}`;
 ---
 
-<section class="relative bg-bg-main-darker text-white overflow-hidden py-40">
+<section class="relative bg-bg-main-darker text-white overflow-hidden py-30">
   <!-- Floating dental icons canvas -->
   <canvas id="dental-icons-canvas" class="sm:hidden absolute inset-0 w-full h-full pointer-events-none"></canvas>
 
@@ -54,6 +55,27 @@ const telHref = `tel:+1${businessInfo.phone.replace(/\D/g, '')}`;
             Call {businessInfo.phone}
           </a>
         </div>
+        <div class="mt-6 flex flex-col gap-2 text-brand-deep">
+          <!-- Live open/closed status — hidden until JS populates it -->
+          <div
+            id="office-status-pill"
+            hidden
+            class="inline-flex w-fit items-center gap-2 rounded-full bg-white/60 px-3 py-1 text-sm font-medium backdrop-blur-sm"
+          >
+            <span id="office-status-dot" aria-hidden="true" class="h-2 w-2 rounded-full bg-green-500"></span>
+            <span id="office-status-text" aria-live="polite"></span>
+          </div>
+          <div class="flex items-center gap-2 text-sm sm:text-base">
+            <span class="text-brand-deep"><Clock size={16} /></span>
+            <span>{businessInfo.hours.display}</span>
+          </div>
+          <div class="flex items-center gap-2 text-sm sm:text-base">
+            <span class="text-brand-deep"><Phone size={16} /></span>
+            <a href={telHref} class="hidden sm:inline font-medium underline-offset-2 hover:underline">{businessInfo.phone}</a>
+            <span class="hidden sm:inline" aria-hidden="true">·</span>
+            <span>24/7 care concierge available</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -67,5 +89,57 @@ const telHref = `tel:+1${businessInfo.phone.replace(/\D/g, '')}`;
     document.addEventListener('DOMContentLoaded', initFloatingIcons);
   } else {
     initFloatingIcons();
+  }
+</script>
+
+<script>
+  import businessInfo from '../data/businessInfo.json';
+
+  function updateOfficeStatus() {
+    const pill = document.getElementById('office-status-pill');
+    const dot = document.getElementById('office-status-dot');
+    const text = document.getElementById('office-status-text');
+    if (!pill || !dot || !text) return;
+
+    // Current weekday + minutes-of-day in the office's timezone (DST-correct, device-tz-independent)
+    const parts = new Intl.DateTimeFormat('en-US', {
+      timeZone: businessInfo.hours.timezone,
+      weekday: 'long',
+      hour: '2-digit',
+      minute: '2-digit',
+      hourCycle: 'h23',
+    }).formatToParts(new Date());
+    const get = (type: string) => parts.find((p) => p.type === type)?.value ?? '';
+    const dayKey = get('weekday').toLowerCase() as keyof typeof businessInfo.hours.schedule;
+    const nowMin = Number(get('hour')) * 60 + Number(get('minute'));
+
+    const today = businessInfo.hours.schedule[dayKey];
+    const toMin = (hhmm: string) => {
+      const [h, m] = hhmm.split(':').map(Number);
+      return h * 60 + m;
+    };
+    const isOpen = !!today && nowMin >= toMin(today.open) && nowMin < toMin(today.close);
+
+    if (isOpen) {
+      const [h, m] = today.close.split(':').map(Number);
+      const closeLabel = new Date(2000, 0, 1, h, m).toLocaleTimeString('en-US', {
+        hour: 'numeric',
+        minute: '2-digit',
+      });
+      text.textContent = `Open now — closes ${closeLabel}`;
+      dot.classList.remove('bg-accent-coral');
+      dot.classList.add('bg-green-500');
+    } else {
+      text.textContent = 'Office closed — concierge is taking calls';
+      dot.classList.remove('bg-green-500');
+      dot.classList.add('bg-accent-coral');
+    }
+    pill.hidden = false;
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateOfficeStatus);
+  } else {
+    updateOfficeStatus();
   }
 </script>

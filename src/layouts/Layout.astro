@@ -13,6 +13,16 @@ const { title, description = 'Cross Creeks Dental - Quality dental care in a com
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImage = new URL(image, Astro.site);
 
+// Derive opening hours from the machine-readable schedule in businessInfo.json
+const openingHoursSpecification = Object.entries(businessInfo.hours.schedule)
+  .filter(([, times]) => times)
+  .map(([day, times]) => ({
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": day.charAt(0).toUpperCase() + day.slice(1),
+    "opens": times!.open,
+    "closes": times!.close,
+  }));
+
 // LocalBusiness Schema.org structured data
 const schemaData = {
   "@context": "https://schema.org",
@@ -36,14 +46,7 @@ const schemaData = {
     "latitude": 39.9199873,
     "longitude": -82.7839474
   },
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
-      "opens": "08:00",
-      "closes": "17:00"
-    }
-  ],
+  "openingHoursSpecification": openingHoursSpecification,
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": reviewsMetadata.averageRating.toString(),
