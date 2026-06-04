@@ -3,6 +3,16 @@ import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import businessInfo from '../data/businessInfo.json';
 import ContactForm from './ContactForm';
 
+// Format a schedule entry ("08:00"/"17:00") as "8:00 AM - 5:00 PM", or "Closed" for null days
+const formatHours = (times: { open: string; close: string } | null) => {
+  if (!times) return 'Closed';
+  const toLabel = (hhmm: string) => {
+    const [h, m] = hhmm.split(':').map(Number);
+    return new Date(2000, 0, 1, h, m).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+  };
+  return `${toLabel(times.open)} - ${toLabel(times.close)}`;
+};
+
 const contactInfo = [
   {
     icon: MapPin,
@@ -22,7 +32,7 @@ const contactInfo = [
   {
     icon: Clock,
     title: 'Office Hours',
-    content: `Monday - Thursday: ${businessInfo.hours.monday}\nFriday - Sunday: ${businessInfo.hours.saturday}`,
+    content: `Monday - Thursday: ${formatHours(businessInfo.hours.schedule.monday)}\nFriday - Sunday: ${formatHours(businessInfo.hours.schedule.saturday)}`,
   },
 ];
 ---
