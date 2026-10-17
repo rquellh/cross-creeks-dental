@@ -1,0 +1,260 @@
+/* Cross Creeks Dental — CardPointe Hosted Payment Page custom CSS.
+   Paste the whole file into the HPP editor, Design tab, Custom CSS.
+   The editor drops everything after the first greater-than sign, so never use child combinators here.
+   Tokens mirror src/styles/global.css so the page matches the site. */
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap");
+
+:root {
+  --ccd-brand-deep: #084d76;
+  --ccd-brand-medium: #1a75ac;
+  --ccd-brand-light: #4ea3d6;
+  --ccd-bg-main: #d9ecf8;
+  --ccd-bg-off-white: #fafbfc;
+  --ccd-text-dark: #2d3748;
+  --ccd-font-body: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --ccd-font-display: "DM Serif Display", Georgia, serif;
+}
+
+/* Page: site linen texture over the light-blue ground */
+body.design__page.design__pay {
+  margin: 0;
+  padding: 2.5rem 1rem 4rem;
+  color: var(--ccd-text-dark) !important;
+  font-family: var(--ccd-font-body) !important;
+  font-size: 16px !important;
+  line-height: 1.5;
+  background-color: var(--ccd-bg-main) !important;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.32) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(8, 77, 118, 0.07) 0 1px, transparent 1px 3px);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Form sits on a white card like the rest of the site */
+body.design__page #mainContainer.wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 10px 30px rgba(8, 77, 118, 0.08);
+}
+
+/* Header: logo and title side by side, whichever order the editor puts them in */
+body.design__page .grid.cols--2:has(h1.page__title) {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+body.design__page .grid.cols--2:has(h1.page__title) .col {
+  float: none;
+  width: auto !important;
+}
+body.design__page h1.page__title {
+  display: block;
+  margin: 0;
+  color: var(--ccd-brand-deep) !important;
+  font-family: var(--ccd-font-display) !important;
+  font-size: 1.875rem !important;
+  font-weight: 400 !important;
+  line-height: 1.15;
+}
+body.design__page h1.page__title .material-icons {
+  font-size: 1.125rem;
+  color: var(--ccd-brand-light);
+  vertical-align: middle;
+  margin-right: 0.25rem;
+}
+body.design__page img.logo {
+  display: block;
+  max-height: 64px;
+  width: auto;
+  margin: 0;
+}
+
+/* Invoice / account / amount sit in one row on wide screens */
+body.design__page .grid.cols--1 .col {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin-top: 1.5rem;
+}
+body.design__page .grid.cols--1 .col .form__row {
+  flex: 1 1 200px;
+}
+body.design__page .grid.cols--1 .surcharge__info--v2 {
+  flex-basis: 100%;
+}
+
+/* Section headings */
+body.design__page h3.page__subtitle {
+  margin: 1.75rem 0 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(78, 163, 214, 0.25);
+  color: var(--ccd-brand-deep) !important;
+  font-family: var(--ccd-font-body) !important;
+  font-size: 1.25rem !important;
+  font-weight: 700;
+}
+body.design__page h4.page__desc {
+  border: 0;
+  padding: 0;
+  margin: 0 0 0.75rem;
+  color: rgba(45, 55, 72, 0.7);
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+/* Fields */
+body.design__page .form__row {
+  margin: 0 0 1rem;
+}
+body.design__page .form__row label:not(.checkbox) {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.35rem;
+  color: var(--ccd-text-dark);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+body.design__page .form__row input:not([type="checkbox"]):not([type="radio"]),
+body.design__page .form__row select {
+  box-sizing: border-box;
+  display: block;
+  width: 100% !important;
+  min-width: 0 !important;
+  height: auto;
+  padding: 0.75rem 1rem;
+  background-color: var(--ccd-bg-off-white);
+  border: 1px solid rgba(78, 163, 214, 0.3);
+  border-radius: 0.375rem;
+  color: var(--ccd-text-dark);
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.25;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+body.design__page .form__row input:focus,
+body.design__page .form__row select:focus {
+  outline: none;
+  border-color: transparent;
+  box-shadow: 0 0 0 2px var(--ccd-brand-medium);
+}
+body.design__page #CreditCardCVV {
+  max-width: 8rem;
+}
+
+/* The HPP wraps each field in shrink-to-fit spans; let them fill the row */
+body.design__page .form__row span:has(input),
+body.design__page .form__row span:has(select),
+body.design__page .form__row span.form__input {
+  display: block;
+  width: 100% !important;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+/* Expiration month and year share a row */
+body.design__page .form__row:has(#expirationDateMonth) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.75rem;
+}
+body.design__page .form__row:has(#expirationDateMonth) label {
+  flex-basis: 100%;
+}
+body.design__page #expirationDateMonth,
+body.design__page #expirationDateYear {
+  flex: 1 1 0;
+  width: auto !important;
+}
+
+/* Amount: the $ sits inside the field */
+body.design__page .form__input--prefixed {
+  display: block;
+  width: 100% !important;
+  min-width: 0 !important;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+body.design__page .currency__label {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  padding: 0;
+  transform: translateY(-50%);
+  line-height: 1;
+  color: rgba(45, 55, 72, 0.6);
+  pointer-events: none;
+}
+body.design__page .form__row input.form__input--currency {
+  width: 100% !important;
+  min-width: 0 !important;
+  padding-left: 2rem !important;
+}
+body.design__page .field--readonly input {
+  background-color: #f5f7fa;
+  color: rgba(45, 55, 72, 0.8);
+}
+
+/* Helper and surcharge copy */
+body.design__page .form__help,
+body.design__page .fs--s {
+  color: rgba(45, 55, 72, 0.7);
+  font-size: 0.8125rem;
+}
+
+/* Submit button: the site's primary button */
+body.design__page #submitBtn.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--ccd-brand-deep);
+  border: 0;
+  border-radius: 0.375rem;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+body.design__page #submitBtn.btn:hover {
+  background: var(--ccd-brand-medium);
+}
+body.design__page #submitBtn.btn:active {
+  background: var(--ccd-brand-deep);
+  transform: scale(0.95);
+}
+body.design__page #submitBtn.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--ccd-brand-medium);
+}
+
+/* Small screens */
+@media (max-width: 767px) {
+  body.design__page.design__pay {
+    padding: 1rem 1rem 3rem;
+  }
+  body.design__page #mainContainer.wrap {
+    padding: 1.5rem 1.25rem;
+  }
+  body.design__page .grid.cols--2:has(h1.page__title) {
+    gap: 1rem;
+  }
+  body.design__page h1.page__title {
+    font-size: 1.5rem !important;
+  }
+  body.design__page img.logo {
+    max-height: 48px;
+  }
+  body.design__page #submitBtn.btn {
+    display: block;
+    width: 100%;
+  }
+}
