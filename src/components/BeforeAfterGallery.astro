@@ -1,6 +1,6 @@
 ---
 import { getImage } from 'astro:assets';
-import BeforeAfterSliderClient from './BeforeAfterSliderClient';
+import BeforeAfterSliderClient, { type SliderImage } from './BeforeAfterSliderClient';
 import beforeAfterData from '../data/beforeAfter.json';
 
 // Import all before/after images
@@ -40,11 +40,26 @@ const imageMapRaw: Record<string, any> = {
   '/src/assets/images/before-after/onlays-after.png': onlaysAfter,
 };
 
-const imageMap: Record<string, string> = Object.fromEntries(
+// Keep the optimized URL together with its width/height so the slider can put
+// them on the <img> as an aspect-ratio hint for the lazy-loaded images.
+const imageMap: Record<string, SliderImage> = Object.fromEntries(
   await Promise.all(
-    Object.entries(imageMapRaw).map(async ([key, img]) => [key, (await getImage({ src: img })).src])
+    Object.entries(imageMapRaw).map(async ([key, img]) => {
+      const { src, attributes } = await getImage({ src: img });
+      return [key, { src, width: attributes.width, height: attributes.height }];
+    })
   )
 );
+
+// A path in beforeAfter.json with no matching import above used to fall back to the
+// raw /src/... path, which 404s on the built site. Fail the build instead.
+const resolveImage = (path: string): SliderImage => {
+  const image = imageMap[path];
+  if (!image) {
+    throw new Error(`BeforeAfterGallery: "${path}" is not imported in imageMapRaw.`);
+  }
+  return image;
+};
 ---
 
 <section class="py-16">
@@ -61,8 +76,8 @@ const imageMap: Record<string, string> = Object.fromEntries(
         <BeforeAfterSliderClient
           client:visible
           title={item.title}
-          beforeImage={imageMap[item.beforeImage] || item.beforeImage}
-          afterImage={imageMap[item.afterImage] || item.afterImage}
+          beforeImage={resolveImage(item.beforeImage)}
+          afterImage={resolveImage(item.afterImage)}
         />
       ))}
     </div>
