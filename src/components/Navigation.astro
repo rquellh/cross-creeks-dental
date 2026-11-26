@@ -1,6 +1,10 @@
 ---
 import logo from '../assets/images/logo.svg';
 import Button from './Button.astro';
+import businessInfo from '../data/businessInfo.json';
+import { telHref } from '../utils/contactLinks';
+
+const PHONE_ICON = '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>';
 
 const NAV_ITEMS = [
   { href: '/', label: 'Home', icon: '<path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><polyline points="9 22 9 12 15 12 15 22"/>' },
@@ -40,8 +44,17 @@ const NAV_ITEMS = [
         </Button>
       </div>
 
-      <!-- Mobile Menu Button -->
-      <div class="lg:hidden">
+      <!-- Mobile Call + Menu Buttons -->
+      <div class="flex items-center gap-1 lg:hidden">
+        <a
+          href={telHref}
+          class="inline-flex items-center justify-center w-11 h-11 rounded-md text-text-dark hover:text-brand-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-medium focus-visible:ring-offset-2 active:text-brand-deep transition-colors"
+          aria-label={`Call ${businessInfo.name} at ${businessInfo.phone}`}
+        >
+          <svg class="h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <Fragment set:html={PHONE_ICON} />
+          </svg>
+        </a>
         <button
           id="mobile-menu-btn"
           class="text-text-dark hover:text-brand-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-medium focus-visible:ring-offset-2 active:text-brand-deep transition-colors"
@@ -72,7 +85,16 @@ const NAV_ITEMS = [
             <span class="font-medium">{item.label}</span>
           </a>
         ))}
-        <div class="pt-2">
+        <div class="pt-2 flex flex-col gap-2">
+          <a
+            href={telHref}
+            class="flex items-center justify-center gap-2 w-full px-6 py-3 rounded-md font-semibold transition-all duration-200 text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-medium focus-visible:ring-offset-2 border-2 border-brand-deep text-brand-deep hover:bg-brand-deep/10 active:bg-brand-deep/20"
+          >
+            <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true">
+              <Fragment set:html={PHONE_ICON} />
+            </svg>
+            Call {businessInfo.phone}
+          </a>
           <a
             href="https://booking.adit.com/fdb30dd3-549e-48dd-89aa-f3fa2b9a5f2d"
             target="_blank"
