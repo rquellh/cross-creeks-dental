@@ -2,6 +2,7 @@
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import businessInfo from '../data/businessInfo.json';
 import ContactForm from './ContactForm';
+import { telHref, mailtoHref } from '../utils/contactLinks';
 
 // Format a schedule entry ("08:00"/"17:00") as "8:00 AM - 5:00 PM", or "Closed" for null days
 const formatHours = (times: { open: string; close: string } | null) => {
@@ -13,7 +14,14 @@ const formatHours = (times: { open: string; close: string } | null) => {
   return `${toLabel(times.open)} - ${toLabel(times.close)}`;
 };
 
-const contactInfo = [
+interface ContactItem {
+  icon: typeof MapPin;
+  title: string;
+  content: string;
+  href?: string;
+}
+
+const contactInfo: ContactItem[] = [
   {
     icon: MapPin,
     title: 'Address',
@@ -23,11 +31,13 @@ const contactInfo = [
     icon: Phone,
     title: 'Phone',
     content: businessInfo.phone,
+    href: telHref,
   },
   {
     icon: Mail,
     title: 'Email',
     content: businessInfo.email,
+    href: mailtoHref,
   },
   {
     icon: Clock,
@@ -61,7 +71,7 @@ const contactInfo = [
                 </div>
                 <div>
                   <h4 class="font-semibold text-brand-deep mb-1">{item.title}</h4>
-                  <p class="text-gray-600 whitespace-pre-line">{item.content}</p>
+                  <p class="text-gray-600 whitespace-pre-line">{item.href ? <a href={item.href} class="font-medium text-brand-deep underline-offset-2 hover:text-brand-medium hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-medium focus-visible:ring-offset-2 transition-colors">{item.content}</a> : item.content}</p>
                 </div>
               </div>
             );

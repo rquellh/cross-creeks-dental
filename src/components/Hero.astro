@@ -4,8 +4,7 @@ import { Clock, Phone } from 'lucide-react';
 import womanSmiling from '../assets/images/woman-smiling.png';
 import Button from './Button.astro';
 import businessInfo from '../data/businessInfo.json';
-
-const telHref = `tel:+1${businessInfo.phone.replace(/\D/g, '')}`;
+import { telHref } from '../utils/contactLinks';
 ---
 
 <section class="relative bg-bg-main-darker text-white overflow-hidden py-30">
