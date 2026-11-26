@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import EmergencyCare from '../components/EmergencyCare.astro';
+import Faq from '../components/Faq.astro';
+import Footer from '../components/Footer.astro';
+import businessInfo from '../data/businessInfo.json';
+import { emergencyFaqs } from '../data/faqs';
+---
+
+<Layout
+  title="Emergency Dentist in Pickerington, OH | Cross Creeks Dental"
+  description={`Same-day emergency dental appointments in Pickerington, OH. Toothache, broken tooth or lost crown? Call Cross Creeks Dental at ${businessInfo.phone}.`}
+>
+  <Navigation />
+  <main class="flex-grow">
+    <EmergencyCare />
+    <Faq heading="Dental Emergency Questions" items={emergencyFaqs} />
+  </main>
+  <Footer />
+</Layout>

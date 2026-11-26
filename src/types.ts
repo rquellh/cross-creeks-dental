@@ -5,4 +5,5 @@ export interface Service {
   icon: string;
   image: string;
   items: string[];
+  link?: { href: string; label: string };
 }

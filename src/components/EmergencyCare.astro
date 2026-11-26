@@ -1,0 +1,189 @@
+---
+import { Phone, MapPin, Clock } from 'lucide-react';
+import businessInfo from '../data/businessInfo.json';
+import Button from './Button.astro';
+import { telHref } from '../utils/contactLinks';
+import { openHours } from '../data/faqs';
+
+// Keep in step with the Emergency Care items in servicesDetail.json
+const emergencies = [
+  'A severe or lasting toothache',
+  'A broken, chipped or cracked tooth',
+  'A lost filling or crown',
+  'A knocked-out or loose tooth',
+  'Swelling in your face or gums, or a painful bump on the gum that may be an abscess',
+  'An injury to your teeth, gums or mouth',
+];
+
+const firstAid = [
+  {
+    title: 'Knocked-Out Tooth',
+    text: "Pick the tooth up by the top (the crown), not the root. If it's dirty, rinse it gently with water, but don't scrub it. Keep it moist in a small container of milk and call us right away, because getting to a dentist quickly matters.",
+  },
+  {
+    title: 'Broken or Chipped Tooth',
+    text: 'Rinse your mouth with warm water and save any pieces you can find. A cold compress on the outside of your cheek may ease swelling. Then give us a call.',
+  },
+  {
+    title: 'Toothache',
+    text: "Rinse your mouth with warm water and gently floss to remove any food caught around the tooth. Don't put aspirin or other pain relievers directly on your gums or tooth, as this can burn the gum tissue. Then give us a call.",
+  },
+  {
+    title: 'Lost Filling or Crown',
+    text: 'If you have the crown, keep it somewhere safe and bring it with you. Try not to chew on that side of your mouth, and call us to be seen.',
+  },
+];
+
+const erSigns = [
+  'Trouble breathing or swallowing',
+  "Bleeding that won't stop",
+  'A serious injury to your face or jaw',
+];
+
+const contactItems = [
+  { icon: Phone, title: 'Phone', content: businessInfo.phone, href: telHref },
+  {
+    icon: MapPin,
+    title: 'Address',
+    content: `${businessInfo.address.street}\n${businessInfo.address.city}, ${businessInfo.address.state} ${businessInfo.address.zip}`,
+  },
+  {
+    icon: Clock,
+    title: 'Office Hours',
+    content: `Monday - Thursday\n${openHours}\nFriday - Sunday\nClosed`,
+  },
+];
+
+const linkClass = 'font-medium text-brand-deep underline underline-offset-2 whitespace-nowrap hover:text-brand-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-medium focus-visible:ring-offset-2 transition-colors';
+const sectionHeading = 'text-4xl md:text-5xl font-bold text-brand-deep text-center font-heading';
+const sectionIntro = 'text-center text-gray-600 mb-12 max-w-2xl mx-auto';
+---
+
+<section class="py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h1 class="text-4xl md:text-5xl font-bold text-brand-deep mb-4 text-center font-heading">
+      Emergency Dental Care
+    </h1>
+    <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+      Dental emergencies can happen anytime. We offer same-day emergency appointments, so if you have a bad toothache, a broken tooth or an injury to your mouth, call us right away.
+    </p>
+    <Button href={telHref}>
+      <Phone className="inline-block w-5 h-5 mr-2 -mt-0.5" aria-hidden="true" />
+      Call {businessInfo.phone}
+    </Button>
+    <p class="text-sm text-gray-600 mt-4 max-w-2xl mx-auto">
+      Office closed? Call the same number and choose the emergency option from the phone menu.
+    </p>
+  </div>
+</section>
+
+<section class="py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class={`${sectionHeading} mb-4`}>
+      What Counts as a Dental Emergency?
+    </h2>
+    <p class={sectionIntro}>
+      Call us if you have any of the following:
+    </p>
+
+    <div class="bg-white p-6 md:p-8 rounded-lg shadow-sm max-w-3xl mx-auto">
+      <ul class="space-y-3">
+        {emergencies.map((item) => (
+          <li class="flex items-start text-gray-700">
+            <span class="mt-2 mr-3 h-2 w-2 rounded-full bg-brand-medium flex-shrink-0" aria-hidden="true"></span>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <p class="text-center text-gray-600 mt-8 max-w-2xl mx-auto">
+      If you're not sure whether something is an emergency, give us a call.
+    </p>
+  </div>
+</section>
+
+<section class="py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class={`${sectionHeading} mb-4`}>
+      What to Do in a Dental Emergency
+    </h2>
+    <div class="max-w-2xl mx-auto mb-12 space-y-4 text-center text-gray-600">
+      <p>
+        During office hours (Monday - Thursday, {openHours}), call <a href={telHref} class={linkClass}>{businessInfo.phone}</a> and let us know you have a dental emergency. We offer same-day emergency appointments.
+      </p>
+      <p>
+        If the office is closed, call <a href={telHref} class={linkClass}>{businessInfo.phone}</a> and choose the emergency option from the phone menu.
+      </p>
+      <p>
+        Until you can be seen, these steps may help:
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+      {firstAid.map((tip) => (
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <h3 class="text-xl font-bold text-brand-deep mb-3">
+            {tip.title}
+          </h3>
+          <p class="text-gray-700 leading-relaxed">
+            {tip.text}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class={`${sectionHeading} mb-4`}>
+      When to Go to the ER or Call 911
+    </h2>
+    <p class={sectionIntro}>
+      Some problems need emergency medical care right away. Call 911 or go to the nearest emergency room if you have:
+    </p>
+
+    <div class="bg-white p-6 md:p-8 rounded-lg shadow-sm max-w-3xl mx-auto">
+      <ul class="space-y-3">
+        {erSigns.map((item) => (
+          <li class="flex items-start text-gray-700">
+            <span class="mt-2 mr-3 h-2 w-2 rounded-full bg-brand-medium flex-shrink-0" aria-hidden="true"></span>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <p class="text-center text-gray-600 mt-8 max-w-2xl mx-auto">
+      Once you've been treated, call us about any dental care you still need.
+    </p>
+  </div>
+</section>
+
+<section class="py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class={`${sectionHeading} mb-12`}>
+      How to Reach Us
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      {contactItems.map((item) => {
+        const Icon = item.icon;
+        return (
+          <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+            <div class="flex justify-center mb-4 text-brand-deep">
+              <Icon size={32} />
+            </div>
+            <h3 class="text-xl font-bold text-brand-deep mb-2">
+              {item.title}
+            </h3>
+            <p class="text-gray-600 whitespace-pre-line">
+              {item.href ? <a href={item.href} class={linkClass}>{item.content}</a> : item.content}
+            </p>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

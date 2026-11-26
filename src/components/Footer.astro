@@ -1,5 +1,5 @@
 ---
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, AlertCircle } from "lucide-react";
 import businessInfo from "../data/businessInfo.json";
 import { telHref, mailtoHref } from "../utils/contactLinks";
 const currentYear = new Date().getFullYear();
@@ -111,6 +111,10 @@ const socialLinks = [
           <li class="flex items-center gap-2">
             <span class="text-brand-deep"><Clock size={18} /></span>
             {businessInfo.hours.display}
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="text-brand-deep"><AlertCircle size={18} /></span>
+            <a href="/emergency-dentist/" class="hover:text-text-dark transition-colors">Dental emergency? Same-day appointments</a>
           </li>
         </ul>
       </div>
