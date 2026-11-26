@@ -18,10 +18,11 @@ const NAV_ITEMS = [
 
 <nav class="bg-white shadow-sm sticky top-0 z-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center h-20">
-      <div class="flex-shrink-0">
+    <div class="flex justify-between items-center gap-3 h-20">
+      <!-- The logo may shrink on narrow phones so the call and menu buttons always fit -->
+      <div class="min-w-0 lg:flex-shrink-0">
         <a href="/" class="block">
-          <img src={logo.src} alt="Cross Creeks Dental" class="h-12" />
+          <img src={logo.src} alt="Cross Creeks Dental" class="h-12 w-auto max-w-full object-contain object-left" />
         </a>
       </div>
 
@@ -45,7 +46,7 @@ const NAV_ITEMS = [
       </div>
 
       <!-- Mobile Call + Menu Buttons -->
-      <div class="flex items-center gap-1 lg:hidden">
+      <div class="flex flex-shrink-0 items-center gap-1 lg:hidden">
         <a
           href={telHref}
           class="inline-flex items-center justify-center w-11 h-11 rounded-md text-text-dark hover:text-brand-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-medium focus-visible:ring-offset-2 active:text-brand-deep transition-colors"
