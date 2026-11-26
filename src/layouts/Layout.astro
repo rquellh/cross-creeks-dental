@@ -1,7 +1,6 @@
 ---
 import '../styles/global.css';
 import businessInfo from '../data/businessInfo.json';
-import reviewsMetadata from '../data/reviews-metadata.json';
 
 interface Props {
   title: string;
@@ -47,11 +46,6 @@ const schemaData = {
     "longitude": -82.7839474
   },
   "openingHoursSpecification": openingHoursSpecification,
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": reviewsMetadata.averageRating.toString(),
-    "reviewCount": reviewsMetadata.totalReviews.toString()
-  },
   "sameAs": [
     "https://www.facebook.com/crosscreeksdental/",
     "https://www.instagram.com/crosscreeksdental/",
