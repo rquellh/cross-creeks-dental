@@ -26,7 +26,7 @@
   {
     "id": "emergency-care",
     "title": "Emergency Care",
-    "description": "Dental emergencies can happen anytime. We provide prompt, professional care to address your urgent dental needs and relieve pain.",
+    "description": "Dental emergencies can happen anytime. We offer same-day emergency appointments to address urgent dental needs and relieve pain.",
     "icon": "AlertCircle",
     "image": "/images/services/emergency.png",
     "items": ["Extractions", "Root Canal Therapy", "Broken Tooth Repair", "Lost Filling/Crown", "Abscess Treatment", "Trauma Care"]
@@ -45,6 +45,6 @@
     "description": "Advanced solutions for complex dental needs. From straightening teeth to relieving jaw pain and treating sleep apnea, we provide specialized care tailored to your unique situation.",
     "icon": "Smile",
     "image": "/images/services/orthodontics.png",
-    "items": ["Clear Aligners", "Retainers", "Night Guards", "Jaw Pain/TMD Treatment", "Oral Sleep Apnea Appliance", "Nitrous Oxide (Laughing Gas)", "Oral Sedation"]
+    "items": ["Invisalign Clear Aligners", "Retainers", "Night Guards", "Jaw Pain/TMD Treatment", "Oral Sleep Apnea Appliance", "Nitrous Oxide (Laughing Gas)", "Oral Sedation"]
   }
 ]

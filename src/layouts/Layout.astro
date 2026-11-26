@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import servicesDetail from '../data/servicesDetail.json';
 import businessInfo from '../data/businessInfo.json';
 
 interface Props {
@@ -57,48 +58,15 @@ const schemaData = {
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Dental Services",
-    "itemListElement": [
-      {
+    "itemListElement": servicesDetail.map((service) => ({
+      "@type": "OfferCatalog",
+      "name": service.title,
+      "description": service.description,
+      "itemListElement": service.items.map((item) => ({
         "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Preventive Dentistry",
-          "description": "Routine cleanings, exams, and preventive care"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Cosmetic Dentistry",
-          "description": "Teeth whitening, veneers, and smile makeovers"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Restorative Dentistry",
-          "description": "Fillings, crowns, bridges, and dental implants"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Orthodontics",
-          "description": "Braces and Invisalign clear aligners"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Emergency Dental Care",
-          "description": "Same-day emergency dental services"
-        }
-      }
-    ]
+        "itemOffered": { "@type": "Service", "name": item }
+      }))
+    }))
   }
 };
 ---
