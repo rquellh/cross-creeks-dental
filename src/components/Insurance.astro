@@ -19,9 +19,11 @@ import connection from '../assets/images/insurance/connection.png';
 
 interface Props {
   headingLevel?: 'h1' | 'h2';
+  // The insurance page turns this off because that page already answers coverage questions itself.
+  showCoverageLink?: boolean;
 }
 
-const { headingLevel = 'h2' } = Astro.props;
+const { headingLevel = 'h2', showCoverageLink = true } = Astro.props;
 const Heading = headingLevel;
 const SubHeading = headingLevel === 'h1' ? 'h2' : 'h3';
 
@@ -73,7 +75,12 @@ const insuranceProviders = [
       ))}
     </div>
 
-    <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+    <div
+      class:list={[
+        'mt-8 grid grid-cols-1 gap-8 mx-auto',
+        showCoverageLink ? 'md:grid-cols-2 max-w-4xl' : 'max-w-md',
+      ]}
+    >
       <div class="text-center p-6">
         <SubHeading class="text-2xl font-bold text-brand-deep mb-3">
           No Insurance? No Problem!
@@ -90,17 +97,19 @@ const insuranceProviders = [
         </Button>
       </div>
 
-      <div class="text-center p-6">
-        <SubHeading class="text-2xl font-bold text-brand-deep mb-3">
-          Questions About Coverage?
-        </SubHeading>
-        <p class="text-gray-600 mb-6">
-          Our team is here to help you understand your insurance benefits
-        </p>
-        <Button href="/contact/">
-          Contact Us
-        </Button>
-      </div>
+      {showCoverageLink && (
+        <div class="text-center p-6">
+          <SubHeading class="text-2xl font-bold text-brand-deep mb-3">
+            Questions About Coverage?
+          </SubHeading>
+          <p class="text-gray-600 mb-6">
+            See how to check your benefits and what to bring to your visit
+          </p>
+          <Button href="/insurance/">
+            Insurance Information
+          </Button>
+        </div>
+      )}
     </div>
   </div>
 </section>
