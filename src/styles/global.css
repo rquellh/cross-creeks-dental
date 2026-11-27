@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+/* DM Serif Display, self-hosted from public/fonts (SIL Open Font License, see
+   public/fonts/dm-serif-display-LICENSE.txt). Latin subset, regular only: no
+   heading text is set in italic. */
+@font-face {
+  font-family: "DM Serif Display";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/dm-serif-display-latin-400-normal.woff2") format("woff2");
+}
+
 @theme {
   /* Cross Creeks Dental Brand Colors */
   --color-brand-deep: #084d76;
