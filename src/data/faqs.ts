@@ -1,7 +1,7 @@
 // Visible question-and-answer content for the services and insurance pages.
 // Rendered by Faq.astro as plain headings and paragraphs (no FAQPage structured data).
 import businessInfo from './businessInfo.json';
-import { telHref, mailtoHref } from '../utils/contactLinks';
+import { telHref } from '../utils/contactLinks';
 
 export interface FaqLink {
   href: string;
@@ -30,7 +30,6 @@ const formatHours = (times: { open: string; close: string } | null) => {
 export const openHours = formatHours(businessInfo.hours.schedule.monday);
 
 const phone: FaqLink = { href: telHref, text: businessInfo.phone };
-const email: FaqLink = { href: mailtoHref, text: businessInfo.email };
 
 export const servicesFaqs: FaqItem[] = [
   {
@@ -78,16 +77,6 @@ export const servicesFaqs: FaqItem[] = [
 ];
 
 export const insuranceFaqs: FaqItem[] = [
-  {
-    question: 'Do you accept my insurance plan?',
-    answer: [
-      "We accept the plans listed above and most insurance plans. If you don't see yours, we may have added your provider, so call us at ",
-      phone,
-      ' or email ',
-      email,
-      ' to ask.',
-    ],
-  },
   {
     question: 'How can I find out what my insurance covers?',
     answer: [
