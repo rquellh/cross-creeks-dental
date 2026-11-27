@@ -89,17 +89,25 @@ export const insuranceFaqs: FaqItem[] = [
     ],
   },
   {
-    question: 'Can you check my benefits before my appointment?',
+    question: 'How can I find out what my insurance covers?',
     answer: [
-      "Yes. We can verify your insurance benefits before your visit or while you're in the office. To have them checked ahead of time, call us at ",
+      "Start with your insurance provider's website. Sign in to your member account and you'll find the details of your plan and what it covers. If you can't find what you need there, call us at ",
       phone,
-      ' with your insurance information.',
+      " and we'll help.",
+    ],
+  },
+  {
+    question: 'Can your office check my benefits for me?',
+    answer: [
+      "Yes. If you can't find what you need on your insurance provider's website, we can verify your benefits before your visit or while you're in the office. Call us at ",
+      phone,
+      '.',
     ],
   },
   {
     question: 'What should I bring to my appointment?',
     answer: [
-      "Bring your insurance card and a photo ID. If you're covered under someone else's plan, bring the policyholder's name and date of birth too.",
+      "Bring your insurance card and a photo ID. If you're covered under someone else's plan, we'll need some of the policyholder's information, and we'll let you know what to have ready when you schedule.",
     ],
   },
   {
