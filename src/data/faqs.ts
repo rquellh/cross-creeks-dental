@@ -96,7 +96,7 @@ export const insuranceFaqs: FaqItem[] = [
   {
     question: 'What should I bring to my appointment?',
     answer: [
-      "Bring your insurance card and a photo ID. If you're covered under someone else's plan, we'll need some of the policyholder's information, and we'll let you know what to have ready when you schedule.",
+      'Bring your insurance card and a photo ID.',
     ],
   },
   {
