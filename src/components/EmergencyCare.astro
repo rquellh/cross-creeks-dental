@@ -1,34 +1,17 @@
 ---
-import { Phone, MapPin, Clock } from 'lucide-react';
+import { Phone, MapPin, Clock, AlertCircle } from 'lucide-react';
 import businessInfo from '../data/businessInfo.json';
 import Button from './Button.astro';
 import { telHref } from '../utils/contactLinks';
 import { openHours } from '../data/faqs';
 
-// Broken teeth and lost fillings or crowns are deliberately not listed here:
-// the practice does not treat them as emergencies (see the note under the list).
+// Broken teeth and lost fillings or crowns are deliberately left out: the practice
+// does not treat them as emergencies (see the line under the list).
 const emergencies = [
   'A severe or lasting toothache',
-  'Swelling in your face or gums, or a painful bump on the gum that may be an abscess',
-  'A knocked-out tooth, or a tooth that has been knocked loose',
+  'Swelling in your face or gums, or an abscess',
+  'A knocked-out or loosened tooth',
   'An injury to your gums or mouth',
-];
-
-const firstAid = [
-  {
-    title: 'Knocked-Out Tooth',
-    text: "Pick the tooth up by the top (the part you normally see), not the root. If it's dirty, rinse it gently with water, but don't scrub it. Keep it moist in a small container of milk and call us right away, because getting to a dentist quickly matters.",
-  },
-  {
-    title: 'Toothache',
-    text: "Rinse your mouth with warm water and gently floss to remove any food caught around the tooth. Don't put aspirin or other pain relievers directly on your gums or tooth, as this can burn the gum tissue. Then give us a call.",
-  },
-];
-
-const urgentSigns = [
-  'Trouble breathing or swallowing',
-  "Bleeding that won't stop",
-  'A serious injury to your face or jaw',
 ];
 
 const officeHours = [
@@ -38,37 +21,34 @@ const officeHours = [
 
 const linkClass = 'font-medium text-brand-deep underline underline-offset-2 whitespace-nowrap hover:text-brand-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-medium focus-visible:ring-offset-2 transition-colors';
 const sectionHeading = 'text-4xl md:text-5xl font-bold text-brand-deep text-center font-heading';
-const sectionIntro = 'text-center text-gray-600 mb-12 max-w-2xl mx-auto';
 const contactCard = 'bg-white px-4 py-6 sm:p-6 rounded-lg shadow-sm text-center';
 const contactIcon = 'flex justify-center mb-4 text-brand-deep';
 const contactTitle = 'text-xl font-bold text-brand-deep mb-2';
+const stepRow = 'py-4 first:pt-0 last:pb-0 sm:grid sm:grid-cols-[13rem_1fr] sm:gap-x-6';
 ---
 
-<section class="py-16">
+<section class="pt-16 pb-10">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
     <h1 class="text-4xl md:text-5xl font-bold text-brand-deep mb-4 text-center font-heading">
       Emergency Dental Care
     </h1>
     <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
-      Dental emergencies can happen anytime. We offer same-day emergency appointments for new and existing patients during office hours, so if you have a severe toothache, swelling or an injury to your mouth, call us right away.
+      Same-day emergency appointments for new and existing patients during office hours.
     </p>
     <Button href={telHref}>
       <Phone className="inline-block w-5 h-5 mr-2 -mt-0.5" aria-hidden="true" />
       Call {businessInfo.phone}
     </Button>
-    <p class="text-sm text-gray-600 mt-4 max-w-2xl mx-auto">
-      Already a patient? When the office is closed, call the same number and choose the emergency option from the phone menu.
-    </p>
   </div>
 </section>
 
-<section class="py-16">
+<section class="py-10">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <h2 class={`${sectionHeading} mb-4`}>
-      What Counts as a Dental Emergency?
+      When to Call Us
     </h2>
-    <p class={sectionIntro}>
-      Call us right away if you have any of the following:
+    <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+      Call right away if you have:
     </p>
 
     <div class="bg-white p-6 md:p-8 rounded-lg shadow-sm max-w-3xl mx-auto">
@@ -82,79 +62,66 @@ const contactTitle = 'text-xl font-bold text-brand-deep mb-2';
       </ul>
     </div>
 
-    <div class="max-w-2xl mx-auto mt-8 space-y-4 text-center text-gray-600">
-      <p>
-        A broken, chipped or cracked tooth, or a lost filling or crown, is usually not an emergency, but it still needs care. Call us during office hours to schedule a visit.
-      </p>
-      <p>
-        If you're not sure whether something is an emergency, give us a call.
-      </p>
-    </div>
-  </div>
-</section>
-
-<section class="py-16">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class={`${sectionHeading} mb-4`}>
-      What to Do in a Dental Emergency
-    </h2>
-    <div class="max-w-2xl mx-auto mb-12 space-y-4 text-center text-gray-600">
-      <p>
-        During office hours (Monday - Thursday, {openHours}), call <a href={telHref} class={linkClass}>{businessInfo.phone}</a> and let us know you have a dental emergency. We offer same-day emergency appointments, whether you're a new patient or we've seen you before.
-      </p>
-      <p>
-        If you're a patient of our practice and need us after hours, call <a href={telHref} class={linkClass}>{businessInfo.phone}</a> and choose the emergency option from the phone menu.
-      </p>
-      <p>
-        New to our office? Call us when we open to ask for a same-day emergency appointment.
-      </p>
-      <p>
-        Until you can be seen, these steps may help:
-      </p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-      {firstAid.map((tip) => (
-        <div class="bg-white p-6 rounded-lg shadow-sm">
-          <h3 class="text-xl font-bold text-brand-deep mb-3">
-            {tip.title}
-          </h3>
-          <p class="text-gray-700 leading-relaxed">
-            {tip.text}
-          </p>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
-
-<section class="py-16">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class={`${sectionHeading} mb-4`}>
-      When to Go to the Emergency Room or Urgent Care
-    </h2>
-    <p class={sectionIntro}>
-      Some problems need medical care right away. Go to the nearest emergency room or urgent care if you have:
+    <p class="text-center text-gray-600 mt-6 max-w-2xl mx-auto">
+      A broken, chipped or cracked tooth, or a lost filling or crown, can usually wait for a regular visit. Not sure? Give us a call.
     </p>
+  </div>
+</section>
 
-    <div class="bg-white p-6 md:p-8 rounded-lg shadow-sm max-w-3xl mx-auto">
-      <ul class="space-y-3">
-        {urgentSigns.map((item) => (
-          <li class="flex items-start text-gray-700">
-            <span class="mt-2 mr-3 h-2 w-2 rounded-full bg-brand-medium flex-shrink-0" aria-hidden="true"></span>
-            {item}
+<section class="py-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class={`${sectionHeading} mb-8`}>
+      What to Do
+    </h2>
+
+    <div class="max-w-3xl mx-auto space-y-8">
+      <div class="bg-white p-6 md:p-8 rounded-lg shadow-sm">
+        <dl class="divide-y divide-gray-200">
+          <div class={stepRow}>
+            <dt class="font-semibold text-brand-deep">
+              During office hours
+              <span class="block text-sm font-normal text-gray-500">
+                <span class="whitespace-nowrap">Monday - Thursday,</span> <span class="whitespace-nowrap">{openHours}</span>
+              </span>
+            </dt>
+            <dd class="mt-1 sm:mt-0 text-gray-700 leading-relaxed">
+              Call <a href={telHref} class={linkClass}>{businessInfo.phone}</a>. We offer same-day emergency appointments.
+            </dd>
+          </div>
+          <div class={stepRow}>
+            <dt class="font-semibold text-brand-deep">After hours</dt>
+            <dd class="mt-1 sm:mt-0 text-gray-700 leading-relaxed">
+              If you're a patient of our practice, call and choose the emergency option from the phone menu. New to our office? Call us when we open.
+            </dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="px-1 md:px-2">
+        <h3 class="text-xl font-bold text-brand-deep mb-3">
+          Until You're Seen
+        </h3>
+        <ul class="space-y-2 text-gray-700 leading-relaxed">
+          <li>
+            <strong class="font-semibold text-brand-deep">Knocked-out tooth:</strong> Hold it by the top (the part you normally see), not the root. Keep it in milk and call right away.
           </li>
-        ))}
-      </ul>
-    </div>
+          <li>
+            <strong class="font-semibold text-brand-deep">Toothache:</strong> Rinse with warm water and floss gently. Don't put aspirin on the gum.
+          </li>
+        </ul>
+      </div>
 
-    <p class="text-center text-gray-600 mt-8 max-w-2xl mx-auto">
-      Once you've been treated, call us about any dental care you still need.
-    </p>
+      <div class="flex items-start gap-3 bg-white border-l-4 border-brand-medium rounded-lg shadow-sm p-5 md:p-6">
+        <AlertCircle className="w-6 h-6 mt-0.5 text-brand-deep flex-shrink-0" aria-hidden="true" />
+        <p class="text-gray-700 leading-relaxed">
+          <strong class="font-semibold text-brand-deep">Need medical care right away?</strong> Go to the nearest emergency room or urgent care if you have trouble breathing or swallowing, bleeding that won't stop, or a serious injury to your face or jaw.
+        </p>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="py-16">
+<section class="pt-10 pb-16">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <h2 class={`${sectionHeading} mb-12`}>
       How to Reach Us

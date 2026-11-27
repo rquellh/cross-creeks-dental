@@ -2,10 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
 import EmergencyCare from '../components/EmergencyCare.astro';
-import Faq from '../components/Faq.astro';
 import Footer from '../components/Footer.astro';
 import businessInfo from '../data/businessInfo.json';
-import { emergencyFaqs } from '../data/faqs';
 ---
 
 <Layout
@@ -15,7 +13,6 @@ import { emergencyFaqs } from '../data/faqs';
   <Navigation />
   <main class="flex-grow">
     <EmergencyCare />
-    <Faq heading="Dental Emergency Questions" items={emergencyFaqs} />
   </main>
   <Footer />
 </Layout>

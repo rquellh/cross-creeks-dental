@@ -1,4 +1,4 @@
-// Visible question-and-answer content for the services, insurance and emergency pages.
+// Visible question-and-answer content for the services and insurance pages.
 // Rendered by Faq.astro as plain headings and paragraphs (no FAQPage structured data).
 import businessInfo from './businessInfo.json';
 import { telHref, mailtoHref } from '../utils/contactLinks';
@@ -116,33 +116,6 @@ export const insuranceFaqs: FaqItem[] = [
       'We offer an in-house Dental Health Savings Club for patients without insurance, as well as financing through CareCredit. See our ',
       { href: '/payments/', text: 'payment options' },
       ' for details.',
-    ],
-  },
-];
-
-export const emergencyFaqs: FaqItem[] = [
-  {
-    question: 'Can I be seen today for a dental emergency?',
-    answer: [
-      'We offer same-day emergency appointments during office hours for both new and existing patients. Call us at ',
-      phone,
-      ' as soon as you can and let us know you have a dental emergency.',
-    ],
-  },
-  {
-    question: 'What if the office is closed?',
-    answer: [
-      "If you're a patient of our practice, call ",
-      phone,
-      " and choose the emergency option from the phone menu. If you're new to our office, call us when we open to ask for a same-day emergency appointment. If you need medical care right away, go to the nearest emergency room or urgent care.",
-    ],
-  },
-  {
-    question: 'Should I go to the emergency room for a dental problem?',
-    answer: [
-      "Go to the nearest emergency room or urgent care if you have trouble breathing or swallowing, bleeding that won't stop, or a serious injury to your face or jaw. For a severe toothache, swelling or a knocked-out tooth, call us at ",
-      phone,
-      '.',
     ],
   },
 ];
