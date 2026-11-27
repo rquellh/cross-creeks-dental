@@ -12,6 +12,7 @@ const NAV_ITEMS = [
   { href: '/services/', label: 'Services', icon: '<path d="M12 3l1.912 5.813h6.124l-4.974 3.587 1.912 5.813L12 14.626l-4.974 3.587 1.912-5.813L3.964 8.813h6.124z"/>' },
   { href: '/insurance/', label: 'Insurance', icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>' },
   { href: '/payments/', label: 'Payments', icon: '<rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/>' },
+  { href: '/emergency-dentist/', label: 'Emergency', icon: '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>' },
   { href: '/contact/', label: 'Contact', icon: '<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>' },
 ];
 ---
@@ -26,9 +27,9 @@ const NAV_ITEMS = [
         </a>
       </div>
 
-      <!-- Desktop Navigation -->
-      <div class="hidden lg:flex items-center space-x-8">
-        {NAV_ITEMS.map((item) => (
+      <!-- Desktop Navigation: no Home link (the logo goes home) and tighter spacing below xl, so the bar stays on one line -->
+      <div class="hidden lg:flex items-center space-x-6 xl:space-x-8">
+        {NAV_ITEMS.filter((item) => item.href !== '/').map((item) => (
           <a
             href={item.href}
             class="text-brand-deep hover:text-brand-medium focus-visible:text-brand-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-medium focus-visible:ring-offset-2 active:text-brand-deep active:scale-[0.98] transition-all duration-200 font-medium"
@@ -72,7 +73,7 @@ const NAV_ITEMS = [
   </div>
 
   <!-- Mobile Navigation Panel -->
-  <div id="mobile-menu-panel" class="lg:hidden hidden absolute top-full left-0 right-0 bg-white shadow-lg border-t border-gray-200 z-50">
+  <div id="mobile-menu-panel" class="lg:hidden hidden absolute top-full left-0 right-0 max-h-[calc(100dvh-5rem)] overflow-y-auto bg-white shadow-lg border-t border-gray-200 z-50">
     <div class="max-w-7xl mx-auto px-4 py-4">
       <div class="bg-white rounded-2xl border border-gray-200 p-4 space-y-2">
         {NAV_ITEMS.map((item) => (

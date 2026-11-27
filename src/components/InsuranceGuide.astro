@@ -1,0 +1,56 @@
+---
+import businessInfo from '../data/businessInfo.json';
+import { telHref, mailtoHref } from '../utils/contactLinks';
+
+const whatToBring = [
+  'Your insurance card',
+  'A photo ID',
+];
+
+const linkClass = 'font-medium text-brand-deep underline underline-offset-2 hover:text-brand-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-medium focus-visible:ring-offset-2 transition-colors';
+---
+
+<section class="py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-4xl md:text-5xl font-bold text-brand-deep mb-4 text-center font-heading">
+      Using Your Dental Insurance
+    </h2>
+    <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+      A few things to know before your visit.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <div class="bg-white p-6 rounded-lg shadow-sm">
+        <h3 class="text-xl font-bold text-brand-deep mb-3">
+          Checking Your Benefits
+        </h3>
+        <p class="text-gray-700 leading-relaxed">
+          The quickest way to see what your plan covers is your insurance provider's website. Sign in to your member account to view your benefits. If you can't find what you need there, call us at <a href={telHref} class={`${linkClass} whitespace-nowrap`}>{businessInfo.phone}</a> and we can verify your benefits before your visit or while you're in the office.
+        </p>
+      </div>
+
+      <div class="bg-white p-6 rounded-lg shadow-sm">
+        <h3 class="text-xl font-bold text-brand-deep mb-3">
+          What to Bring
+        </h3>
+        <ul class="space-y-2 leading-relaxed">
+          {whatToBring.map((item) => (
+            <li class="flex items-start text-gray-700">
+              <span class="mt-2 mr-3 h-2 w-2 rounded-full bg-brand-medium flex-shrink-0" aria-hidden="true"></span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="bg-white p-6 rounded-lg shadow-sm">
+        <h3 class="text-xl font-bold text-brand-deep mb-3">
+          Who to Contact
+        </h3>
+        <p class="text-gray-700 leading-relaxed">
+          For questions about what your plan covers, start with your insurance provider's website. Don't see your plan listed, or still need help? Call us at <a href={telHref} class={`${linkClass} whitespace-nowrap`}>{businessInfo.phone}</a> or email <a href={mailtoHref} class={`${linkClass} break-words`}>{businessInfo.email}</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

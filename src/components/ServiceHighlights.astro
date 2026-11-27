@@ -1,0 +1,40 @@
+---
+const highlights = [
+  {
+    title: 'Dental Implants',
+    text: 'A dental implant replaces the root of a missing tooth with a small post set in the jawbone. The post then supports a crown, bridge or denture designed to look and feel like natural teeth. Ask us whether an implant is a good option for you.',
+  },
+  {
+    title: 'Invisalign Clear Aligners',
+    text: 'Invisalign uses a series of clear, removable aligners to gradually straighten teeth. The aligners are custom-made to fit your teeth, and you can take them out to eat, brush and floss. Ask us whether Invisalign is right for you.',
+  },
+  {
+    title: 'Dentures',
+    text: 'Dentures are removable replacements for missing teeth. Full dentures replace all of the teeth in the upper or lower jaw, while partial dentures fill the gaps when some natural teeth remain. Ask us which type may suit you.',
+  },
+];
+---
+
+<section class="py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-4xl md:text-5xl font-bold text-brand-deep mb-4 text-center font-heading">
+      Replacing and Straightening Teeth
+    </h2>
+    <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+      A short introduction to three of the treatments we offer.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      {highlights.map((item) => (
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <h3 class="text-xl font-bold text-brand-deep mb-3 text-center">
+            {item.title}
+          </h3>
+          <p class="text-gray-700 leading-relaxed">
+            {item.text}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,41 @@
+---
+import type { FaqItem } from '../data/faqs';
+
+interface Props {
+  heading: string;
+  items: FaqItem[];
+}
+
+const { heading, items } = Astro.props;
+
+const linkClass = 'font-medium text-brand-deep underline underline-offset-2 hover:text-brand-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-medium focus-visible:ring-offset-2 transition-colors';
+
+// Keep phone numbers on one line; let long email addresses wrap on small screens
+const linkWrap = (href: string) =>
+  href.startsWith('tel:') ? 'whitespace-nowrap' : href.startsWith('mailto:') ? 'break-words' : '';
+---
+
+<section class="py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-4xl md:text-5xl font-bold text-brand-deep mb-12 text-center font-heading">
+      {heading}
+    </h2>
+
+    <div class="max-w-3xl mx-auto space-y-6">
+      {items.map((item) => (
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <h3 class="text-xl font-bold text-brand-deep mb-3">
+            {item.question}
+          </h3>
+          <p class="text-gray-700 leading-relaxed">
+            {item.answer.map((part) =>
+              typeof part === 'string'
+                ? part
+                : <a href={part.href} class={`${linkClass} ${linkWrap(part.href)}`.trim()}>{part.text}</a>
+            )}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

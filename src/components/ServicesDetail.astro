@@ -52,6 +52,14 @@ const iconMap: Record<string, any> = {
                 </li>
               ))}
             </ul>
+            {service.link && (
+              <a
+                href={service.link.href}
+                class="inline-block mt-4 text-sm font-semibold text-brand-deep underline underline-offset-2 hover:text-brand-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-medium focus-visible:ring-offset-2 transition-colors"
+              >
+                {service.link.label} <span aria-hidden="true">&rarr;</span>
+              </a>
+            )}
           </div>
         );
       })}

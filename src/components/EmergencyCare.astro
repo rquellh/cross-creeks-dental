@@ -1,0 +1,171 @@
+---
+import { Phone, MapPin, Clock, AlertCircle } from 'lucide-react';
+import businessInfo from '../data/businessInfo.json';
+import Button from './Button.astro';
+import { telHref } from '../utils/contactLinks';
+import { openHours } from '../data/faqs';
+
+// Broken teeth and lost fillings or crowns are deliberately left out: the practice
+// does not treat them as emergencies (see the line under the list).
+const emergencies = [
+  'A severe or lasting toothache',
+  'Swelling in your face or gums, or an abscess',
+  'A knocked-out or loosened tooth',
+  'An injury to your gums or mouth',
+];
+
+const officeHours = [
+  { days: 'Monday - Thursday', hours: openHours },
+  { days: 'Friday - Sunday', hours: 'Closed' },
+];
+
+const linkClass = 'font-medium text-brand-deep underline underline-offset-2 whitespace-nowrap hover:text-brand-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-medium focus-visible:ring-offset-2 transition-colors';
+const sectionHeading = 'text-4xl md:text-5xl font-bold text-brand-deep text-center font-heading';
+const contactCard = 'bg-white px-4 py-6 sm:p-6 rounded-lg shadow-sm text-center';
+const contactIcon = 'flex justify-center mb-4 text-brand-deep';
+const contactTitle = 'text-xl font-bold text-brand-deep mb-2';
+const stepRow = 'py-4 first:pt-0 last:pb-0 sm:grid sm:grid-cols-[13rem_1fr] sm:gap-x-6';
+---
+
+<section class="pt-16 pb-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h1 class="text-4xl md:text-5xl font-bold text-brand-deep mb-4 text-center font-heading">
+      Emergency Dental Care
+    </h1>
+    <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+      Same-day emergency appointments for new and existing patients during office hours.
+    </p>
+    <Button href={telHref}>
+      <Phone className="inline-block w-5 h-5 mr-2 -mt-0.5" aria-hidden="true" />
+      Call {businessInfo.phone}
+    </Button>
+  </div>
+</section>
+
+<section class="py-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class={`${sectionHeading} mb-4`}>
+      When to Call Us
+    </h2>
+    <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+      Call right away if you have:
+    </p>
+
+    <div class="bg-white p-6 md:p-8 rounded-lg shadow-sm max-w-3xl mx-auto">
+      <ul class="space-y-3">
+        {emergencies.map((item) => (
+          <li class="flex items-start text-gray-700">
+            <span class="mt-2 mr-3 h-2 w-2 rounded-full bg-brand-medium flex-shrink-0" aria-hidden="true"></span>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <p class="text-center text-gray-600 mt-6 max-w-2xl mx-auto">
+      A broken, chipped or cracked tooth, or a lost filling or crown, can usually wait for a regular visit. Not sure? Give us a call.
+    </p>
+  </div>
+</section>
+
+<section class="py-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class={`${sectionHeading} mb-8`}>
+      What to Do
+    </h2>
+
+    <div class="max-w-3xl mx-auto space-y-8">
+      <div class="bg-white p-6 md:p-8 rounded-lg shadow-sm">
+        <dl class="divide-y divide-gray-200">
+          <div class={stepRow}>
+            <dt class="font-semibold text-brand-deep">
+              During office hours
+              <span class="block text-sm font-normal text-gray-500">
+                <span class="whitespace-nowrap">Monday - Thursday,</span> <span class="whitespace-nowrap">{openHours}</span>
+              </span>
+            </dt>
+            <dd class="mt-1 sm:mt-0 text-gray-700 leading-relaxed">
+              Call <a href={telHref} class={linkClass}>{businessInfo.phone}</a>. We offer same-day emergency appointments.
+            </dd>
+          </div>
+          <div class={stepRow}>
+            <dt class="font-semibold text-brand-deep">After hours</dt>
+            <dd class="mt-1 sm:mt-0 text-gray-700 leading-relaxed">
+              If you're a patient of our practice, call and choose the emergency option from the phone menu. New to our office? Call us when we open.
+            </dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="px-1 md:px-2">
+        <h3 class="text-xl font-bold text-brand-deep mb-3">
+          Until You're Seen
+        </h3>
+        <ul class="space-y-2 text-gray-700 leading-relaxed">
+          <li>
+            <strong class="font-semibold text-brand-deep">Knocked-out tooth:</strong> Hold it by the top (the part you normally see), not the root. Keep it in milk and call right away.
+          </li>
+          <li>
+            <strong class="font-semibold text-brand-deep">Toothache:</strong> Rinse with warm water and floss gently. Don't put aspirin on the gum.
+          </li>
+        </ul>
+      </div>
+
+      <div class="flex items-start gap-3 bg-white border-l-4 border-brand-medium rounded-lg shadow-sm p-5 md:p-6">
+        <AlertCircle className="w-6 h-6 mt-0.5 text-brand-deep flex-shrink-0" aria-hidden="true" />
+        <p class="text-gray-700 leading-relaxed">
+          <strong class="font-semibold text-brand-deep">Need medical care right away?</strong> Go to the nearest emergency room or urgent care if you have trouble breathing or swallowing, bleeding that won't stop, or a serious injury to your face or jaw.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pt-10 pb-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class={`${sectionHeading} mb-12`}>
+      How to Reach Us
+    </h2>
+
+    {/* Two columns with the hours card spanning below them until xl, where three cards are wide enough
+        for each hours row to stay on one line */}
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <div class={contactCard}>
+        <div class={contactIcon}>
+          <Phone size={32} />
+        </div>
+        <h3 class={contactTitle}>Phone</h3>
+        <p class="text-gray-600">
+          <a href={telHref} class={linkClass}>{businessInfo.phone}</a>
+        </p>
+      </div>
+
+      <div class={contactCard}>
+        <div class={contactIcon}>
+          <MapPin size={32} />
+        </div>
+        <h3 class={contactTitle}>Address</h3>
+        <p class="text-gray-600">
+          {businessInfo.address.street}<br />
+          {businessInfo.address.city}, {businessInfo.address.state} {businessInfo.address.zip}
+        </p>
+      </div>
+
+      <div class={`${contactCard} md:col-span-2 xl:col-span-1`}>
+        <div class={contactIcon}>
+          <Clock size={32} />
+        </div>
+        <h3 class={contactTitle}>Office Hours</h3>
+        {/* Day left, time right; below 360px a row cannot fit on one line, so the time drops under the day */}
+        <dl class="grid grid-cols-[auto_auto] justify-between gap-x-3 gap-y-1 w-full max-w-xs mx-auto text-gray-600 max-[359px]:grid-cols-1 max-[359px]:justify-center">
+          {officeHours.map((row) => (
+            <Fragment>
+              <dt class="text-left whitespace-nowrap max-[359px]:text-center">{row.days}</dt>
+              <dd class="text-right whitespace-nowrap max-[359px]:text-center max-[359px]:mb-2">{row.hours}</dd>
+            </Fragment>
+          ))}
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>

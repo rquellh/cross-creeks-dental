@@ -29,7 +29,8 @@
     "description": "Dental emergencies can happen anytime. We offer same-day emergency appointments to address urgent dental needs and relieve pain.",
     "icon": "AlertCircle",
     "image": "/images/services/emergency.png",
-    "items": ["Extractions", "Root Canal Therapy", "Broken Tooth Repair", "Lost Filling/Crown", "Abscess Treatment", "Trauma Care"]
+    "items": ["Extractions", "Root Canal Therapy", "Broken Tooth Repair", "Lost Filling/Crown", "Abscess Treatment", "Trauma Care"],
+    "link": { "href": "/emergency-dentist/", "label": "What to do in a dental emergency" }
   },
   {
     "id": "family-dentistry",
