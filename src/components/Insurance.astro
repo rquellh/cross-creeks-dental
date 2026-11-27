@@ -23,6 +23,7 @@ interface Props {
 
 const { headingLevel = 'h2' } = Astro.props;
 const Heading = headingLevel;
+const SubHeading = headingLevel === 'h1' ? 'h2' : 'h3';
 
 const insuranceProviders = [
   { name: 'Delta Dental PPO/Premier', image: deltaDental },
@@ -65,18 +66,18 @@ const insuranceProviders = [
               <Shield className="w-8 h-8 text-brand-deep" />
             )}
           </div>
-          <h3 class="text-sm font-semibold text-gray-800">
+          <SubHeading class="text-sm font-semibold text-gray-800">
             {provider.name}
-          </h3>
+          </SubHeading>
         </div>
       ))}
     </div>
 
     <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
       <div class="text-center p-6">
-        <h3 class="text-2xl font-bold text-brand-deep mb-3">
+        <SubHeading class="text-2xl font-bold text-brand-deep mb-3">
           No Insurance? No Problem!
-        </h3>
+        </SubHeading>
         <p class="text-gray-600 mb-6">
           We offer a competitive in-house Dental Health Savings Club for those without insurance
         </p>
@@ -90,9 +91,9 @@ const insuranceProviders = [
       </div>
 
       <div class="text-center p-6">
-        <h3 class="text-2xl font-bold text-brand-deep mb-3">
+        <SubHeading class="text-2xl font-bold text-brand-deep mb-3">
           Questions About Coverage?
-        </h3>
+        </SubHeading>
         <p class="text-gray-600 mb-6">
           Our team is here to help you understand your insurance benefits
         </p>
