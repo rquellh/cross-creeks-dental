@@ -5,14 +5,13 @@ import Button from './Button.astro';
 import { telHref } from '../utils/contactLinks';
 import { openHours } from '../data/faqs';
 
-// Keep in step with the Emergency Care items in servicesDetail.json
+// Broken teeth and lost fillings or crowns are deliberately not listed here:
+// the practice does not treat them as emergencies (see the note under the list).
 const emergencies = [
   'A severe or lasting toothache',
-  'A broken, chipped or cracked tooth',
-  'A lost filling or crown',
-  'A knocked-out or loose tooth',
   'Swelling in your face or gums, or a painful bump on the gum that may be an abscess',
-  'An injury to your teeth, gums or mouth',
+  'A knocked-out tooth, or a tooth that has been knocked loose',
+  'An injury to your gums or mouth',
 ];
 
 const firstAid = [
@@ -21,42 +20,28 @@ const firstAid = [
     text: "Pick the tooth up by the top (the crown), not the root. If it's dirty, rinse it gently with water, but don't scrub it. Keep it moist in a small container of milk and call us right away, because getting to a dentist quickly matters.",
   },
   {
-    title: 'Broken or Chipped Tooth',
-    text: 'Rinse your mouth with warm water and save any pieces you can find. A cold compress on the outside of your cheek may ease swelling. Then give us a call.',
-  },
-  {
     title: 'Toothache',
     text: "Rinse your mouth with warm water and gently floss to remove any food caught around the tooth. Don't put aspirin or other pain relievers directly on your gums or tooth, as this can burn the gum tissue. Then give us a call.",
   },
-  {
-    title: 'Lost Filling or Crown',
-    text: 'If you have the crown, keep it somewhere safe and bring it with you. Try not to chew on that side of your mouth, and call us to be seen.',
-  },
 ];
 
-const erSigns = [
+const urgentSigns = [
   'Trouble breathing or swallowing',
   "Bleeding that won't stop",
   'A serious injury to your face or jaw',
 ];
 
-const contactItems = [
-  { icon: Phone, title: 'Phone', content: businessInfo.phone, href: telHref },
-  {
-    icon: MapPin,
-    title: 'Address',
-    content: `${businessInfo.address.street}\n${businessInfo.address.city}, ${businessInfo.address.state} ${businessInfo.address.zip}`,
-  },
-  {
-    icon: Clock,
-    title: 'Office Hours',
-    content: `Monday - Thursday\n${openHours}\nFriday - Sunday\nClosed`,
-  },
+const officeHours = [
+  { days: 'Monday - Thursday', hours: openHours },
+  { days: 'Friday - Sunday', hours: 'Closed' },
 ];
 
 const linkClass = 'font-medium text-brand-deep underline underline-offset-2 whitespace-nowrap hover:text-brand-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-medium focus-visible:ring-offset-2 transition-colors';
 const sectionHeading = 'text-4xl md:text-5xl font-bold text-brand-deep text-center font-heading';
 const sectionIntro = 'text-center text-gray-600 mb-12 max-w-2xl mx-auto';
+const contactCard = 'bg-white px-4 py-6 sm:p-6 rounded-lg shadow-sm text-center';
+const contactIcon = 'flex justify-center mb-4 text-brand-deep';
+const contactTitle = 'text-xl font-bold text-brand-deep mb-2';
 ---
 
 <section class="py-16">
@@ -65,14 +50,14 @@ const sectionIntro = 'text-center text-gray-600 mb-12 max-w-2xl mx-auto';
       Emergency Dental Care
     </h1>
     <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
-      Dental emergencies can happen anytime. We offer same-day emergency appointments, so if you have a bad toothache, a broken tooth or an injury to your mouth, call us right away.
+      Dental emergencies can happen anytime. We offer same-day emergency appointments for new and existing patients during office hours, so if you have a severe toothache, swelling or an injury to your mouth, call us right away.
     </p>
     <Button href={telHref}>
       <Phone className="inline-block w-5 h-5 mr-2 -mt-0.5" aria-hidden="true" />
       Call {businessInfo.phone}
     </Button>
     <p class="text-sm text-gray-600 mt-4 max-w-2xl mx-auto">
-      Office closed? Call the same number and choose the emergency option from the phone menu.
+      Already a patient? When the office is closed, call the same number and choose the emergency option from the phone menu.
     </p>
   </div>
 </section>
@@ -83,7 +68,7 @@ const sectionIntro = 'text-center text-gray-600 mb-12 max-w-2xl mx-auto';
       What Counts as a Dental Emergency?
     </h2>
     <p class={sectionIntro}>
-      Call us if you have any of the following:
+      Call us right away if you have any of the following:
     </p>
 
     <div class="bg-white p-6 md:p-8 rounded-lg shadow-sm max-w-3xl mx-auto">
@@ -97,9 +82,14 @@ const sectionIntro = 'text-center text-gray-600 mb-12 max-w-2xl mx-auto';
       </ul>
     </div>
 
-    <p class="text-center text-gray-600 mt-8 max-w-2xl mx-auto">
-      If you're not sure whether something is an emergency, give us a call.
-    </p>
+    <div class="max-w-2xl mx-auto mt-8 space-y-4 text-center text-gray-600">
+      <p>
+        A broken, chipped or cracked tooth, or a lost filling or crown, is usually not an emergency, but it still needs care. Call us during office hours to schedule a visit.
+      </p>
+      <p>
+        If you're not sure whether something is an emergency, give us a call.
+      </p>
+    </div>
   </div>
 </section>
 
@@ -110,10 +100,13 @@ const sectionIntro = 'text-center text-gray-600 mb-12 max-w-2xl mx-auto';
     </h2>
     <div class="max-w-2xl mx-auto mb-12 space-y-4 text-center text-gray-600">
       <p>
-        During office hours (Monday - Thursday, {openHours}), call <a href={telHref} class={linkClass}>{businessInfo.phone}</a> and let us know you have a dental emergency. We offer same-day emergency appointments.
+        During office hours (Monday - Thursday, {openHours}), call <a href={telHref} class={linkClass}>{businessInfo.phone}</a> and let us know you have a dental emergency. We offer same-day emergency appointments, whether you're a new patient or we've seen you before.
       </p>
       <p>
-        If the office is closed, call <a href={telHref} class={linkClass}>{businessInfo.phone}</a> and choose the emergency option from the phone menu.
+        If you're a patient of our practice and need us after hours, call <a href={telHref} class={linkClass}>{businessInfo.phone}</a> and choose the emergency option from the phone menu.
+      </p>
+      <p>
+        New to our office? Call us when we open to ask for a same-day emergency appointment.
       </p>
       <p>
         Until you can be seen, these steps may help:
@@ -138,15 +131,15 @@ const sectionIntro = 'text-center text-gray-600 mb-12 max-w-2xl mx-auto';
 <section class="py-16">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <h2 class={`${sectionHeading} mb-4`}>
-      When to Go to the ER or Call 911
+      When to Go to the Emergency Room or Urgent Care
     </h2>
     <p class={sectionIntro}>
-      Some problems need emergency medical care right away. Call 911 or go to the nearest emergency room if you have:
+      Some problems need medical care right away. Go to the nearest emergency room or urgent care if you have:
     </p>
 
     <div class="bg-white p-6 md:p-8 rounded-lg shadow-sm max-w-3xl mx-auto">
       <ul class="space-y-3">
-        {erSigns.map((item) => (
+        {urgentSigns.map((item) => (
           <li class="flex items-start text-gray-700">
             <span class="mt-2 mr-3 h-2 w-2 rounded-full bg-brand-medium flex-shrink-0" aria-hidden="true"></span>
             {item}
@@ -167,23 +160,45 @@ const sectionIntro = 'text-center text-gray-600 mb-12 max-w-2xl mx-auto';
       How to Reach Us
     </h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-      {contactItems.map((item) => {
-        const Icon = item.icon;
-        return (
-          <div class="bg-white p-6 rounded-lg shadow-sm text-center">
-            <div class="flex justify-center mb-4 text-brand-deep">
-              <Icon size={32} />
-            </div>
-            <h3 class="text-xl font-bold text-brand-deep mb-2">
-              {item.title}
-            </h3>
-            <p class="text-gray-600 whitespace-pre-line">
-              {item.href ? <a href={item.href} class={linkClass}>{item.content}</a> : item.content}
-            </p>
-          </div>
-        );
-      })}
+    {/* Two columns with the hours card spanning below them until xl, where three cards are wide enough
+        for each hours row to stay on one line */}
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <div class={contactCard}>
+        <div class={contactIcon}>
+          <Phone size={32} />
+        </div>
+        <h3 class={contactTitle}>Phone</h3>
+        <p class="text-gray-600">
+          <a href={telHref} class={linkClass}>{businessInfo.phone}</a>
+        </p>
+      </div>
+
+      <div class={contactCard}>
+        <div class={contactIcon}>
+          <MapPin size={32} />
+        </div>
+        <h3 class={contactTitle}>Address</h3>
+        <p class="text-gray-600">
+          {businessInfo.address.street}<br />
+          {businessInfo.address.city}, {businessInfo.address.state} {businessInfo.address.zip}
+        </p>
+      </div>
+
+      <div class={`${contactCard} md:col-span-2 xl:col-span-1`}>
+        <div class={contactIcon}>
+          <Clock size={32} />
+        </div>
+        <h3 class={contactTitle}>Office Hours</h3>
+        {/* Day left, time right; below 360px a row cannot fit on one line, so the time drops under the day */}
+        <dl class="grid grid-cols-[auto_auto] justify-between gap-x-3 gap-y-1 w-full max-w-xs mx-auto text-gray-600 max-[359px]:grid-cols-1 max-[359px]:justify-center">
+          {officeHours.map((row) => (
+            <Fragment>
+              <dt class="text-left whitespace-nowrap max-[359px]:text-center">{row.days}</dt>
+              <dd class="text-right whitespace-nowrap max-[359px]:text-center max-[359px]:mb-2">{row.hours}</dd>
+            </Fragment>
+          ))}
+        </dl>
+      </div>
     </div>
   </div>
 </section>

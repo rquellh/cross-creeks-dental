@@ -42,7 +42,7 @@ export const servicesFaqs: FaqItem[] = [
   {
     question: 'Can I get a same-day appointment for a dental emergency?',
     answer: [
-      'We offer same-day emergency appointments. Call us at ',
+      'We offer same-day emergency appointments during office hours for new and existing patients. Call us at ',
       phone,
       ', and see our ',
       { href: '/emergency-dentist/', text: 'emergency dental care page' },
@@ -52,7 +52,7 @@ export const servicesFaqs: FaqItem[] = [
   {
     question: 'What are your office hours?',
     answer: [
-      `We're open Monday - Thursday, ${openHours}, and closed Friday - Sunday. For a dental emergency when the office is closed, call `,
+      `We're open Monday - Thursday, ${openHours}, and closed Friday - Sunday. If you're a patient of ours with a dental emergency when the office is closed, call `,
       phone,
       ' and choose the emergency option from the phone menu.',
     ],
@@ -116,7 +116,7 @@ export const emergencyFaqs: FaqItem[] = [
   {
     question: 'Can I be seen today for a dental emergency?',
     answer: [
-      'We offer same-day emergency appointments. During office hours, call us at ',
+      'We offer same-day emergency appointments during office hours for both new and existing patients. Call us at ',
       phone,
       ' as soon as you can and let us know you have a dental emergency.',
     ],
@@ -124,15 +124,15 @@ export const emergencyFaqs: FaqItem[] = [
   {
     question: 'What if the office is closed?',
     answer: [
-      'Call ',
+      "If you're a patient of our practice, call ",
       phone,
-      ' and choose the emergency option from the phone menu. If your situation is life-threatening, call 911.',
+      " and choose the emergency option from the phone menu. If you're new to our office, call us when we open to ask for a same-day emergency appointment. If you need medical care right away, go to the nearest emergency room or urgent care.",
     ],
   },
   {
     question: 'Should I go to the emergency room for a dental problem?',
     answer: [
-      "Call 911 or go to the nearest emergency room if you have trouble breathing or swallowing, bleeding that won't stop, or a serious injury to your face or jaw. For a toothache, a broken or knocked-out tooth, or a lost filling or crown, call us at ",
+      "Go to the nearest emergency room or urgent care if you have trouble breathing or swallowing, bleeding that won't stop, or a serious injury to your face or jaw. For a severe toothache, swelling or a knocked-out tooth, call us at ",
       phone,
       '.',
     ],
