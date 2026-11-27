@@ -1,9 +1,17 @@
 import { useState, useRef, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
+// width/height are the image's intrinsic size. They only give the browser the
+// aspect ratio before the file loads; CSS (w-full h-full) sets the rendered size.
+export interface SliderImage {
+  src: string;
+  width: number;
+  height: number;
+}
+
 interface BeforeAfterSliderClientProps {
-  beforeImage: string;
-  afterImage: string;
+  beforeImage: SliderImage;
+  afterImage: SliderImage;
   title: string;
 }
 
@@ -63,8 +71,12 @@ export default function BeforeAfterSliderClient({ beforeImage, afterImage, title
         {/* After Image (Background) */}
         <div className="absolute inset-0">
           <img
-            src={afterImage}
-            alt="After dental treatment - improved smile"
+            src={afterImage.src}
+            width={afterImage.width}
+            height={afterImage.height}
+            alt={`${title}: after treatment`}
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover"
             draggable={false}
           />
@@ -79,8 +91,12 @@ export default function BeforeAfterSliderClient({ beforeImage, afterImage, title
           style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
         >
           <img
-            src={beforeImage}
-            alt="Before dental treatment"
+            src={beforeImage.src}
+            width={beforeImage.width}
+            height={beforeImage.height}
+            alt={`${title}: before treatment`}
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover"
             draggable={false}
           />
